@@ -28,5 +28,5 @@ public enum BULLET_STATE
 interface IBullet
 {
     void Shoot(Transform ownerTransfrom, OWNER owner, BULLET_EFFECT effect);
-    void Shoot(Transform ownerTransfrom, OWNER owner, BULLET_EFFECT effect, int speed, int damage);
+    void Shoot(Transform ownerTransfrom, OWNER owner, BULLET_EFFECT effect, float speed, int damage);
 }
