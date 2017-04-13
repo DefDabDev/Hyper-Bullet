@@ -10,6 +10,8 @@ namespace Monster.Object
         {
             mSpeed = 3f;
             mHP = 100;
+            v_Monster.Add(this);
+            //Debug.Log(v_Monster.Count);
         }
 
         void Update()
