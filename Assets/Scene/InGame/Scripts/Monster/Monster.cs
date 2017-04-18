@@ -27,6 +27,7 @@ namespace Monster
         {
             mSpeed = 1;
             mHP = 1;
+            target = Hero.Hero._hero.transform;
         }
 
         public void receiveDMG(uint amount)

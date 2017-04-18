@@ -11,7 +11,7 @@ namespace GM
 
         void Awake()
         {
-            monsterPrefab = Resources.Load("Monster/MRectangle") as GameObject;
+            monsterPrefab = Resources.Load("Monster/MRect") as GameObject;
             monsterParent = this.transform;
         }
 
@@ -63,6 +63,10 @@ namespace GM
         {
             GameObject obj = Instantiate(monsterPrefab) as GameObject;
             obj.transform.parent = monsterParent;
+            obj.transform.localPosition = new Vector3(
+                Hero.Hero._hero.transform.position.x + Random.Range(-1280, 1280),
+                Hero.Hero._hero.transform.position.y + Random.Range(-720, 720));
+            obj.transform.localScale = Vector3.one;
             return obj;
         }
     }
