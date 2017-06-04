@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace Monster.Object
 {
-    public class MRectangle : Monster
+    public class MRectangle : CMonster
     {
         void Awake()
         {
             mSpeed = 3f;
             mHP = 100;
-            v_Monster.Add(this);
+            //v_Monster[0].Add(this);
             //Debug.Log(v_Monster.Count);
         }
 

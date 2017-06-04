@@ -6,16 +6,21 @@ namespace GM
 {
     public class EditorManager : MonoBehaviour
     {
-        float monsterSpeed = 0;
+        //float monsterSpeed = 0;
 
         void OnGUI()
         {
-            GUI.Box(new Rect(10, 10, 100, 90), "Monster");            
-            if (GUI.Button(new Rect(20, 40, 80, 20), "Create"))
+            GUI.Box(new Rect(10, 10, 100, 100), "MRectangle");
+            if (GUI.Button(new Rect(15, 30, 90, 20), "Create"))
             {
                 MonsterManager.workingMonster();
             }
-            monsterSpeed = GUI.HorizontalSlider(new Rect(20, 65, 80, 30), monsterSpeed, 0.0F, 10.0F);
+            Monster.CMonster.moveVariation = GUI.HorizontalSlider(new Rect(15, 50, 90, 30), Monster.CMonster.moveVariation, 0.1F, 1F);
+            GUI.Label(new Rect(15, 60, 90, 20), "Sp : " + Monster.CMonster.moveVariation);
+
+            Monster.CMonster.moveVariation = GUI.HorizontalSlider(new Rect(15, 80, 90, 30), Monster.CMonster.moveVariation, 0.1F, 1F);
+            GUI.Label(new Rect(15, 90, 90, 20), "Hp : " + Monster.CMonster.moveVariation);
+            
         }
     }
 }
