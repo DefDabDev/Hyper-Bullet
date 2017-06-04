@@ -9,6 +9,7 @@ namespace GM
     public class MonsterManager : MonoBehaviour
     {
         static GameObject monsterPrefab_R;
+        static GameObject monsterPrefab_H;
         static Transform monsterParent;
 
         public List<CMonster> v_HexaMonster = new List<CMonster>();
@@ -21,23 +22,26 @@ namespace GM
             v_Monster.Add(v_HexaMonster);
 
             monsterPrefab_R = Resources.Load("Monster/MRect") as GameObject;
+            monsterPrefab_H = Resources.Load("Monster/MHexa") as GameObject;
             monsterParent = this.transform;
         }
 
         void Start()
         {
-            //!< 초반에 Pool 크기를 20개로 잡고 생성함
-            for (int i = 0; i < 20; i++)
+            //!< 초반에 Pool 크기를 5개씩으로 잡고 생성함
+            for (int i = 0; i < 5; i++)
                 createMonster(EMonster.MRECT).SetActive(false);
+            for (int i = 0; i < 5; i++)
+                createMonster(EMonster.MHEXA).SetActive(false);
         }
 
         /// <summary>
         /// 몬스터 작동시키기 (Pool 이 충분치 않다면 늘려줌)
         /// </summary>
-        public static void workingMonster()
+        public static void workingMonster(EMonster em)
         {
-            if (checkRestingMonster(EMonster.MRECT))
-                createMonster(EMonster.MRECT);
+            if (checkRestingMonster(em))
+                createMonster(em);
         }
         
         /// <summary>
@@ -80,6 +84,7 @@ namespace GM
                     obj = Instantiate(monsterPrefab_R) as GameObject;
                     break;
                 case EMonster.MHEXA:
+                    obj = Instantiate(monsterPrefab_H) as GameObject;
                     break;
                 default:
                     break;

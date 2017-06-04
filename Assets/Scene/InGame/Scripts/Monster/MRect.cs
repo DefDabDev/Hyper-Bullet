@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Monster.Object
 {
-    public class MRectangle : CMonster
+    public class MRect : CMonster
     {
         void Awake()
         {

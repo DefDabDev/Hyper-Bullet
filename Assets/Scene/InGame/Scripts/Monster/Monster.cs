@@ -21,6 +21,7 @@ namespace Monster
         public static float mSpeed_Hexa = 3f;
 
         public static float mHp_Rect = 100;
+        public static float mHp_Hexa = 100;
 
         void OnEnable()
         {

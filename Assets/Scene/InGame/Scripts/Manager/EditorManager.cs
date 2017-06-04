@@ -14,7 +14,7 @@ namespace GM
             GUI.Box(new Rect(10, 10 + maxH * idx, 100, maxH), "MRect");
             if (GUI.Button(new Rect(15, 30 + maxH * idx, 90, 20), "Create"))
             {
-                MonsterManager.workingMonster();
+                MonsterManager.workingMonster(Monster.EMonster.MRECT);
             }
 
             Monster.CMonster.mSpeed_Rect = GUI.HorizontalSlider(new Rect(15, 50 + maxH * idx, 90, 30), Monster.CMonster.mSpeed_Rect, 0.1F, 5F);
@@ -24,6 +24,19 @@ namespace GM
             GUI.Label(new Rect(15, 90 + maxH * idx, 90, 20), "Hp : " + Monster.CMonster.mHp_Rect);
 
             idx = 1;
+
+
+            GUI.Box(new Rect(10, 10 + maxH * idx, 100, maxH), "MHexa");
+            if (GUI.Button(new Rect(15, 30 + maxH * idx, 90, 20), "Create"))
+            {
+                MonsterManager.workingMonster(Monster.EMonster.MHEXA);
+            }
+
+            Monster.CMonster.mSpeed_Hexa = GUI.HorizontalSlider(new Rect(15, 50 + maxH * idx, 90, 30), Monster.CMonster.mSpeed_Hexa, 0.1F, 5F);
+            GUI.Label(new Rect(15, 60 + maxH * idx, 90, 20), "Sp : " + Monster.CMonster.mSpeed_Hexa);
+
+            Monster.CMonster.mHp_Hexa = GUI.HorizontalSlider(new Rect(15, 80 + maxH * idx, 90, 30), Monster.CMonster.mHp_Hexa, 0, 500);
+            GUI.Label(new Rect(15, 90 + maxH * idx, 90, 20), "Hp : " + Monster.CMonster.mHp_Hexa);
 
         }
     }
