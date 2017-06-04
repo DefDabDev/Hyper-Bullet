@@ -28,7 +28,7 @@ namespace GM
         {
             //!< 초반에 Pool 크기를 20개로 잡고 생성함
             for (int i = 0; i < 20; i++)
-                createMonster(EMonster.MREC).SetActive(false);
+                createMonster(EMonster.MRECT).SetActive(false);
         }
 
         /// <summary>
@@ -36,8 +36,8 @@ namespace GM
         /// </summary>
         public static void workingMonster()
         {
-            if (checkRestingMonster(EMonster.MREC))
-                createMonster(EMonster.MREC);
+            if (checkRestingMonster(EMonster.MRECT))
+                createMonster(EMonster.MRECT);
         }
         
         /// <summary>
@@ -76,7 +76,7 @@ namespace GM
             GameObject obj = null;
             switch (em)
             {
-                case EMonster.MREC:
+                case EMonster.MRECT:
                     obj = Instantiate(monsterPrefab_R) as GameObject;
                     break;
                 case EMonster.MHEXA:
@@ -89,8 +89,6 @@ namespace GM
                 Hero.Hero._hero.transform.position.x + Random.Range(-1280, 1280),
                 Hero.Hero._hero.transform.position.y + Random.Range(-720, 720));
             obj.transform.localScale = Vector3.one;
-
-            v_Monster[(int)em].Add(obj.GetComponent<CMonster>());
 
             return obj;
         }

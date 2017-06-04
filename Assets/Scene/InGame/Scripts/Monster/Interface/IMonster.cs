@@ -20,7 +20,7 @@ namespace Monster
 
     public enum EMonster
     {
-        MREC = 0,
+        MRECT = 0,
         MHEXA
     }
 }

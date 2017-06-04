@@ -6,21 +6,25 @@ namespace GM
 {
     public class EditorManager : MonoBehaviour
     {
-        //float monsterSpeed = 0;
-
         void OnGUI()
         {
-            GUI.Box(new Rect(10, 10, 100, 100), "MRectangle");
-            if (GUI.Button(new Rect(15, 30, 90, 20), "Create"))
+            int maxH = 100;
+            int idx = 0;
+
+            GUI.Box(new Rect(10, 10 + maxH * idx, 100, maxH), "MRect");
+            if (GUI.Button(new Rect(15, 30 + maxH * idx, 90, 20), "Create"))
             {
                 MonsterManager.workingMonster();
             }
-            Monster.CMonster.moveVariation = GUI.HorizontalSlider(new Rect(15, 50, 90, 30), Monster.CMonster.moveVariation, 0.1F, 1F);
-            GUI.Label(new Rect(15, 60, 90, 20), "Sp : " + Monster.CMonster.moveVariation);
 
-            Monster.CMonster.moveVariation = GUI.HorizontalSlider(new Rect(15, 80, 90, 30), Monster.CMonster.moveVariation, 0.1F, 1F);
-            GUI.Label(new Rect(15, 90, 90, 20), "Hp : " + Monster.CMonster.moveVariation);
-            
+            Monster.CMonster.mSpeed_Rect = GUI.HorizontalSlider(new Rect(15, 50 + maxH * idx, 90, 30), Monster.CMonster.mSpeed_Rect, 0.1F, 5F);
+            GUI.Label(new Rect(15, 60 + maxH * idx, 90, 20), "Sp : " + Monster.CMonster.mSpeed_Rect);
+
+            Monster.CMonster.mHp_Rect = GUI.HorizontalSlider(new Rect(15, 80 + maxH * idx, 90, 30), Monster.CMonster.mHp_Rect, 0, 500);
+            GUI.Label(new Rect(15, 90 + maxH * idx, 90, 20), "Hp : " + Monster.CMonster.mHp_Rect);
+
+            idx = 1;
+
         }
     }
 }

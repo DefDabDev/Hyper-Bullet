@@ -17,11 +17,16 @@ namespace Monster
         [SerializeField]
         protected uint mHP = 0;         // hp
         
+        public static float mSpeed_Rect = 3f;
+        public static float mSpeed_Hexa = 3f;
+
+        public static float mHp_Rect = 100;
+
         void OnEnable()
         {
             mSpeed = 1;
             mHP = 1;
-            target = Hero.Hero._hero.transform;
+            setTarget();
         }
 
         /// <summary>
@@ -34,6 +39,14 @@ namespace Monster
 
             if (mHP <= 0)
                 this.gameObject.SetActive(false);
+        }
+
+        /// <summary>
+        /// 타겟 선정하기
+        /// </summary>
+        public void setTarget()
+        {
+            target = Hero.Hero._hero.transform;
         }
 
         /// <summary>

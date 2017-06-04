@@ -8,10 +8,14 @@ namespace Monster.Object
     {
         void Awake()
         {
-            mSpeed = 3f;
-            mHP = 100;
-            //v_Monster[0].Add(this);
-            //Debug.Log(v_Monster.Count);
+            GM.MonsterManager.v_Monster[(int)EMonster.MRECT].Add(this);
+        }
+
+        void OnEnable()
+        {
+            setTarget();
+            mSpeed = mSpeed_Rect;
+            mHP = (uint)mHp_Rect;
         }
 
         void Update()
