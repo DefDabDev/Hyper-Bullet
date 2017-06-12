@@ -18,9 +18,11 @@ namespace Monster
         protected uint mHP = 0;         // hp
         
         public static float mSpeed_Rect = 3f;
+        public static float mSpeed_Penta = 3f;
         public static float mSpeed_Hexa = 3f;
 
         public static float mHp_Rect = 100;
+        public static float mHp_Penta = 100;
         public static float mHp_Hexa = 100;
 
         void OnEnable()

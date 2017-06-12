@@ -21,6 +21,7 @@ namespace Monster
     public enum EMonster
     {
         MRECT = 0,
+        MPENTA,
         MHEXA
     }
 }

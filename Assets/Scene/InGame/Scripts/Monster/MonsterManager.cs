@@ -8,20 +8,24 @@ namespace GM
 
     public class MonsterManager : MonoBehaviour
     {
-        static GameObject monsterPrefab_R;
-        static GameObject monsterPrefab_H;
+        static GameObject monsterPrefab_R;  // M Rect
+        static GameObject monsterPrefab_P;  // M Penta
+        static GameObject monsterPrefab_H;  // M Hexa
         static Transform monsterParent;
 
-        public List<CMonster> v_HexaMonster = new List<CMonster>();
         public List<CMonster> v_RectMonster = new List<CMonster>();
+        public List<CMonster> v_PentaMonster = new List<CMonster>();
+        public List<CMonster> v_HexaMonster = new List<CMonster>();
         public static List<List<CMonster>> v_Monster = new List<List<CMonster>>();
 
         void Awake()
         {
             v_Monster.Add(v_RectMonster);
+            v_Monster.Add(v_PentaMonster);
             v_Monster.Add(v_HexaMonster);
 
             monsterPrefab_R = Resources.Load("Monster/MRect") as GameObject;
+            monsterPrefab_P = Resources.Load("Monster/MPenta") as GameObject;
             monsterPrefab_H = Resources.Load("Monster/MHexa") as GameObject;
             monsterParent = this.transform;
         }
@@ -31,6 +35,8 @@ namespace GM
             //!< 초반에 Pool 크기를 5개씩으로 잡고 생성함
             for (int i = 0; i < 5; i++)
                 createMonster(EMonster.MRECT).SetActive(false);
+            for (int i = 0; i < 5; i++)
+                createMonster(EMonster.MPENTA).SetActive(false);
             for (int i = 0; i < 5; i++)
                 createMonster(EMonster.MHEXA).SetActive(false);
         }
@@ -82,6 +88,9 @@ namespace GM
             {
                 case EMonster.MRECT:
                     obj = Instantiate(monsterPrefab_R) as GameObject;
+                    break;
+                case EMonster.MPENTA:
+                    obj = Instantiate(monsterPrefab_P) as GameObject;
                     break;
                 case EMonster.MHEXA:
                     obj = Instantiate(monsterPrefab_H) as GameObject;
