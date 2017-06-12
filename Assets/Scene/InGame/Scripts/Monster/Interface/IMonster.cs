@@ -22,6 +22,7 @@ namespace Monster
     {
         MRECT = 0,
         MPENTA,
-        MHEXA
+        MHEXA,
+        MRECTRECT
     }
 }

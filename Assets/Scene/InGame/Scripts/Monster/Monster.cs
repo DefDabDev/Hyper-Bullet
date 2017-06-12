@@ -16,6 +16,7 @@ namespace Monster
         protected float mSpeed = 0;     // 이동 속도
         [SerializeField]
         protected uint mHP = 0;         // hp
+        public uint hp { get { return mHP; } }
         
         public static float mSpeed_Rect = 3f;
         public static float mSpeed_Penta = 3f;
@@ -67,6 +68,14 @@ namespace Monster
         public static void Variation()
         {
             moveVariation = (moveVariation == 1 ? 0.03f : 1);
+        }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Bullet"))
+            {
+                receiveDMG(Hero.Hero._hero.dmg);
+            }
         }
     }
 }

@@ -11,11 +11,13 @@ namespace GM
         static GameObject monsterPrefab_R;  // M Rect
         static GameObject monsterPrefab_P;  // M Penta
         static GameObject monsterPrefab_H;  // M Hexa
+        static GameObject monsterPrefab_RR;  // M RectRect
         static Transform monsterParent;
 
         public List<CMonster> v_RectMonster = new List<CMonster>();
         public List<CMonster> v_PentaMonster = new List<CMonster>();
         public List<CMonster> v_HexaMonster = new List<CMonster>();
+        public List<CMonster> v_RectRectMonster = new List<CMonster>();
         public static List<List<CMonster>> v_Monster = new List<List<CMonster>>();
 
         void Awake()
@@ -23,10 +25,12 @@ namespace GM
             v_Monster.Add(v_RectMonster);
             v_Monster.Add(v_PentaMonster);
             v_Monster.Add(v_HexaMonster);
+            v_Monster.Add(v_RectRectMonster);
 
             monsterPrefab_R = Resources.Load("Monster/MRect") as GameObject;
             monsterPrefab_P = Resources.Load("Monster/MPenta") as GameObject;
             monsterPrefab_H = Resources.Load("Monster/MHexa") as GameObject;
+            monsterPrefab_RR = Resources.Load("Monster/MRect_Rect") as GameObject;
             monsterParent = this.transform;
         }
 
@@ -39,6 +43,8 @@ namespace GM
                 createMonster(EMonster.MPENTA).SetActive(false);
             for (int i = 0; i < 5; i++)
                 createMonster(EMonster.MHEXA).SetActive(false);
+            for (int i = 0; i < 5; i++)
+                createMonster(EMonster.MRECT).SetActive(false);
         }
 
         /// <summary>
@@ -94,6 +100,9 @@ namespace GM
                     break;
                 case EMonster.MHEXA:
                     obj = Instantiate(monsterPrefab_H) as GameObject;
+                    break;
+                case EMonster.MRECTRECT:
+                    obj = Instantiate(monsterPrefab_RR) as GameObject;
                     break;
                 default:
                     break;

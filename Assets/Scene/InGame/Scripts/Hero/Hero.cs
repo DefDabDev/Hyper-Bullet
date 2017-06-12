@@ -8,9 +8,19 @@ namespace Hero
     {
         public static Hero _hero = null;
 
+        public uint dmg = 10;
+
         void Awake()
         {
             _hero = this;
+        }
+
+        void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag("Monster"))
+            {
+                Debug.Log("Game Over");
+            }
         }
     }
 }
