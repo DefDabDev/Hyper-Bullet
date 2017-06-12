@@ -20,6 +20,8 @@ namespace Monster.Object
 
         void Update()
         {
+            transform.Rotate(new Vector3(0, 0, -10 * Time.deltaTime));
+
             moveToTarget();
         }
     }

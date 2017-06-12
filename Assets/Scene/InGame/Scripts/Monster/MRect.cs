@@ -6,15 +6,9 @@ namespace Monster.Object
 {
     public class MRect : CMonster
     {
-        protected bool myself = true;
-        public bool detention { set { myself = value; } }
-
         void Awake()
         {
-            if (myself)
-            {
-                GM.MonsterManager.v_Monster[(int)EMonster.MRECT].Add(this);
-            }
+            GM.MonsterManager.v_Monster[(int)EMonster.MRECT].Add(this);
         }
 
         void OnEnable()
@@ -23,11 +17,8 @@ namespace Monster.Object
             mSpeed = mSpeed_Rect;
             mHP = (uint)mHp_Rect;
 
-            if (myself)
-            {
-                StopCoroutine("update");
-                StartCoroutine("update");
-            }
+            StopCoroutine("update");
+            StartCoroutine("update");
         }
 
         /// <summary>
@@ -37,9 +28,9 @@ namespace Monster.Object
         {
             if (gameObject.activeSelf)
             {
-                myself = true;
                 StopCoroutine("update");
                 StartCoroutine("update");
+                this.transform.SetParent(GM.MonsterManager.monsterParent);
             }
         }
 
@@ -47,9 +38,43 @@ namespace Monster.Object
         {
             while (true)
             {
+                transform.Rotate(new Vector3(0, 0, -10 * Time.deltaTime));
+
                 moveToTarget();
                 yield return null;
             }
+        }
+
+        /// <summary>
+        /// 합체 : MRectRect 몬스터를 만드는 과정
+        /// </summary>
+        public void copulation()
+        {
+            GameObject obj = null;
+            obj = GM.MonsterManager.workingMonster(EMonster.MRECT, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(0, 130);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+            obj = GM.MonsterManager.workingMonster(EMonster.MRECT, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(130, 0);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+            obj = GM.MonsterManager.workingMonster(EMonster.MRECT, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(0, -130);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+            obj = GM.MonsterManager.workingMonster(EMonster.MRECT, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(-130, 0);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+        }
+
+        /// <summary>
+        /// 행동 불능으로 만들기
+        /// </summary>
+        public void fetter()
+        {
+            StopCoroutine("update");
         }
     }
 }
