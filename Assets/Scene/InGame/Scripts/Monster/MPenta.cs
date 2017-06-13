@@ -53,5 +53,49 @@ namespace Monster.Object
                 yield return null;
             }
         }
+
+        /// <summary>
+        /// 합체 : MRectRect 몬스터를 만드는 과정
+        /// </summary>
+        public void copulation()
+        {
+            transform.Rotate(new Vector3(0, 0, 180));
+            transform.localScale = new Vector3(1.8f, 1.8f);
+
+            GameObject obj = null;
+            obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(0, 160);
+            obj.transform.localScale = new Vector3(1.8f, 1.8f);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+            obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(110, 50);
+            obj.transform.localScale = new Vector3(1,1);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+            obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(-110, 50);
+            obj.transform.localScale = new Vector3(1, 1);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+            obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(-80, -70);
+            obj.transform.localScale = new Vector3(1, 1);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+            obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(80, -70);
+            obj.transform.localScale = new Vector3(1, 1);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+        }
+
+        /// <summary>
+        /// 행동 불능으로 만들기
+        /// </summary>
+        public void fetter()
+        {
+            StopCoroutine("update");
+        }
     }
 }

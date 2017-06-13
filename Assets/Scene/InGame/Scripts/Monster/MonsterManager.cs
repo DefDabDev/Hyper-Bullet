@@ -16,7 +16,6 @@ namespace GM
         public List<CMonster> v_RectMonster = new List<CMonster>();
         public List<CMonster> v_PentaMonster = new List<CMonster>();
         public List<CMonster> v_HexaMonster = new List<CMonster>();
-        public List<CMonster> v_RectRectMonster = new List<CMonster>();
         public static List<List<CMonster>> v_Monster = new List<List<CMonster>>();
 
         void Awake()
@@ -46,7 +45,8 @@ namespace GM
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                GameObject obj = createMonster(EMonster.MRECT);
+                //GameObject obj = createMonster(EMonster.MRECT);
+                GameObject obj = createMonster(EMonster.MPENTA);
                 //obj.SetActive(false);
                 obj.SendMessage("copulation");
             }
@@ -112,9 +112,11 @@ namespace GM
             switch (em)
             {
                 case EMonster.MRECT:
+                //case EMonster.MRECTRECT:
                     obj = Instantiate(monsterPrefab_R) as GameObject;
                     break;
                 case EMonster.MPENTA:
+                //case EMonster.MTURTLE:
                     obj = Instantiate(monsterPrefab_P) as GameObject;
                     break;
                 case EMonster.MHEXA:
