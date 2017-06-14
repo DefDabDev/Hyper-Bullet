@@ -23,7 +23,8 @@ namespace Monster
         MRECT = 0,
         MPENTA,
         MHEXA,
-        MRECTBABY
+        MRECTBABY,
+        MPENTABABY
         /*MRECTRECT,
         MTURTLE*/
     }

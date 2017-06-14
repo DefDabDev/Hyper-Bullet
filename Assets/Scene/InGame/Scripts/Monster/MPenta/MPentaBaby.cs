@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace Monster.Object
 {
-    public class MRectBaby : CMonster
+    public class MPentaBaby : CMonster
     {
         void Awake()
         {
-            GM.MonsterManager.v_Monster[(int)EMonster.MRECT].Add(this);
+            GM.MonsterManager.v_Monster[(int)EMonster.MPENTABABY].Add(this);
         }
 
         void OnEnable()
@@ -35,7 +35,7 @@ namespace Monster.Object
             {
                 yield return new WaitForSeconds(3);
 
-                GM.MonsterManager.workingMonster(EMonster.MRECT, 0).transform.position = transform.position;
+                GM.MonsterManager.workingMonster(EMonster.MPENTA, 0).transform.position = transform.position;
             }
         }
     }

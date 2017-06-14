@@ -60,32 +60,32 @@ namespace Monster.Object
         public void copulation()
         {
             transform.Rotate(new Vector3(0, 0, 180));
-            transform.localScale = new Vector3(1, 1);
+            transform.localScale = new Vector3(1.4f, 1.4f);
 
             GameObject obj = null;
             obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
-            obj.transform.localPosition = transform.localPosition + new Vector3(0, 225);
-            obj.transform.localScale = new Vector3(1, 1);
+            obj.transform.localPosition = transform.localPosition + new Vector3(0, 210);
+            obj.transform.localScale = new Vector3(1.4f, 1.4f);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
             obj.transform.localPosition = transform.localPosition + new Vector3(145, 65);
-            obj.transform.localScale = new Vector3(0.5f,0.5f);
+            obj.transform.localScale = new Vector3(0.9f,0.9f);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
             obj.transform.localPosition = transform.localPosition + new Vector3(-145, 65);
-            obj.transform.localScale = new Vector3(0.5f, 0.5f);
+            obj.transform.localScale = new Vector3(0.9f, 0.9f);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
             obj.transform.localPosition = transform.localPosition + new Vector3(-105, -95);
-            obj.transform.localScale = new Vector3(0.5f, 0.5f);
+            obj.transform.localScale = new Vector3(0.9f, 0.9f);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
             obj.transform.localPosition = transform.localPosition + new Vector3(105, -95);
-            obj.transform.localScale = new Vector3(0.5f, 0.5f);
+            obj.transform.localScale = new Vector3(0.9f, 0.9f);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
         }

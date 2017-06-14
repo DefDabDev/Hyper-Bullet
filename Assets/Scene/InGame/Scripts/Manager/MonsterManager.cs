@@ -10,6 +10,7 @@ using UnityEngine;
 //    > 중심부가 파괴되었을 때엔 코루틴 fetter 를 호출합니다.
 //
 //  - 베이비시터형 몬스터는 재활용 하지 않습니다.
+//    > 귀찮아서..
 //
 //======================================================================
 
@@ -19,17 +20,21 @@ namespace GM
 
     public class MonsterManager : MonoBehaviour
     {
+        #region _MONSTER_POOL_
         static GameObject monsterPrefab_R;  // M Rect
         static GameObject monsterPrefab_P;  // M Penta
         static GameObject monsterPrefab_H;  // M Hexa
-        static GameObject monsterPrefab_RB; // M Hexa
+        static GameObject monsterPrefab_RB; // M Rect Baby
+        static GameObject monsterPrefab_PB; // M Penta Baby
         public static Transform monsterParent;
 
         public List<CMonster> v_RectMonster     = new List<CMonster>();
         public List<CMonster> v_PentaMonster    = new List<CMonster>();
         public List<CMonster> v_HexaMonster     = new List<CMonster>();
         public List<CMonster> v_RectBabyMonster = new List<CMonster>();
+        public List<CMonster> v_PentaBabyMonster = new List<CMonster>();
         public static List<List<CMonster>> v_Monster = new List<List<CMonster>>();
+        #endregion
 
         void Awake()
         {
@@ -37,11 +42,13 @@ namespace GM
             v_Monster.Add(v_PentaMonster);
             v_Monster.Add(v_HexaMonster);
             v_Monster.Add(v_RectBabyMonster);
+            v_Monster.Add(v_PentaBabyMonster);
 
             monsterPrefab_R = Resources.Load("Monster/MRect") as GameObject;
             monsterPrefab_P = Resources.Load("Monster/MPenta") as GameObject;
             monsterPrefab_H = Resources.Load("Monster/MHexa") as GameObject;
             monsterPrefab_RB = Resources.Load("Monster/MRectBaby") as GameObject;
+            monsterPrefab_PB = Resources.Load("Monster/MPentaBaby") as GameObject;
             monsterParent = this.transform;
         }
 
@@ -127,6 +134,9 @@ namespace GM
                     break;
                 case EMonster.MRECTBABY:
                     obj = Instantiate(monsterPrefab_RB) as GameObject;
+                    break;
+                case EMonster.MPENTABABY:
+                    obj = Instantiate(monsterPrefab_PB) as GameObject;
                     break;
                 default:
                     break;

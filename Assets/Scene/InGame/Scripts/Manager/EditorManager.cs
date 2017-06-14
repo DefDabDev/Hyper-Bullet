@@ -10,8 +10,8 @@ namespace GM
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
-                GameObject obj = MonsterManager.createMonster(Monster.EMonster.MRECT);
-                obj.SendMessage("copulation");
+                GameObject obj = MonsterManager.createMonster(Monster.EMonster.MPENTABABY);
+                //obj.SendMessage("copulation");
             }
         }
 

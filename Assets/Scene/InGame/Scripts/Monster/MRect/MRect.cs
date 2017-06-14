@@ -52,19 +52,19 @@ namespace Monster.Object
         {
             GameObject obj = null;
             obj = GM.MonsterManager.workingMonster(EMonster.MRECT, 0);
-            obj.transform.localPosition = transform.localPosition + new Vector3(0, 130);
+            obj.transform.localPosition = transform.localPosition + new Vector3(0, 150);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MRECT, 0);
-            obj.transform.localPosition = transform.localPosition + new Vector3(130, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(150, 0);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MRECT, 0);
-            obj.transform.localPosition = transform.localPosition + new Vector3(0, -130);
+            obj.transform.localPosition = transform.localPosition + new Vector3(0, -150);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MRECT, 0);
-            obj.transform.localPosition = transform.localPosition + new Vector3(-130, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(-150, 0);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
         }
