@@ -80,6 +80,7 @@ namespace Monster
             if (other.gameObject.CompareTag("Bullet"))
             {
                 receiveDMG((uint)Hero.Hero._hero.dmg);
+                other.gameObject.SetActive(false);
             }
         }
     }

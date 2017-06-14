@@ -80,11 +80,17 @@ namespace GM
                 MonsterManager.workingMonster(Monster.EMonster.MHEXABABY);
             
             // HERO
-            GUI.Box(new Rect(510, 10, 100, 80), "Hero");
-            Hero.Hero._hero.dmg = Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(515, 30, 90, 30), Hero.Hero._hero.dmg, 0, 10));
-            GUI.Label(new Rect(515, 40, 90, 20), "Dmg : " + Hero.Hero._hero.dmg);
-            Hero.HeroMover._moveSpeed = GUI.HorizontalSlider(new Rect(515, 60, 90, 30), Hero.HeroMover._moveSpeed, 0.1F, 5F);
-            GUI.Label(new Rect(515, 70, 90, 20), "Sp : " + Hero.HeroMover._moveSpeed);
+            GUI.Box(new Rect(600, 10, 100, 170), "Hero");
+            Hero.Hero._hero.dmg = Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(605, 30, 90, 30), Hero.Hero._hero.dmg, 0, 100));
+            GUI.Label(new Rect(605, 40, 90, 20), "Dmg : " + Hero.Hero._hero.dmg);
+            Hero.HeroMover._moveSpeed = GUI.HorizontalSlider(new Rect(605, 60, 90, 30), Hero.HeroMover._moveSpeed, 0.1F, 10F);
+            GUI.Label(new Rect(605, 70, 90, 20), "Sp : " + Hero.HeroMover._moveSpeed);
+            GunBehaviour._speed = GUI.HorizontalSlider(new Rect(605, 90, 90, 30), GunBehaviour._speed, 100, 500);
+            GUI.Label(new Rect(605, 100, 90, 20), "GSp : " + GunBehaviour._speed);
+            GunBehaviour._fireDelay = GUI.HorizontalSlider(new Rect(605, 120, 90, 30), GunBehaviour._fireDelay, 0, 0.5F);
+            GUI.Label(new Rect(605, 130, 90, 20), "FD : " + GunBehaviour._fireDelay);
+            GunBehaviour._shootDelay = GUI.HorizontalSlider(new Rect(605, 150, 90, 30), GunBehaviour._shootDelay, 0, 0.5F);
+            GUI.Label(new Rect(605, 160, 90, 20), "SD : " + GunBehaviour._shootDelay);
         }
     }
 }

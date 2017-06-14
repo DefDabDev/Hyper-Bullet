@@ -3,19 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : GameBehaviour, IBullet {
+public class Bullet : GameBehaviour, IBullet
+{
 
     public void Shoot(Transform ownerTransfrom, OWNER owner, BULLET_EFFECT effect)
     {
         _state = BULLET_STATE.SHOOTING;
         transform.rotation = ownerTransfrom.rotation;
+        transform.position = ownerTransfrom.position;
         _bulletEffect = effect;
         _owner = owner;
     }
 
-    public void Shoot(Transform ownerTransfrom, OWNER owner, BULLET_EFFECT effect, int speed, int damage)
+    public void Shoot(Transform ownerTransfrom, OWNER owner, BULLET_EFFECT effect, float speed, int damage)
     {
         _state = BULLET_STATE.SHOOTING;
+        transform.position = ownerTransfrom.position;
         transform.rotation = ownerTransfrom.rotation;
         _bulletEffect = effect;
         _owner = owner;
@@ -28,6 +31,12 @@ public class Bullet : GameBehaviour, IBullet {
         _state = BULLET_STATE.SLEEP;
     }
 
+    private void OnBecameInvisible()
+    {
+        Debug.Log("Hi");
+        gameObject.SetActive(false);
+    }
+
     private void FixedUpdate()
     {
         Movement();
@@ -36,6 +45,11 @@ public class Bullet : GameBehaviour, IBullet {
     private void Movement()
     {
         rigid2D.velocity = transform.up * _speed * Time.smoothDeltaTime;
+    }
+
+    public void SetRotation(float z)
+    {
+        transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, transform.rotation.x, z));
     }
 
     [SerializeField]
