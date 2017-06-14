@@ -449,6 +449,7 @@ MonoBehaviour:
   v_RectMonster: []
   v_PentaMonster: []
   v_HexaMonster: []
+  v_RectBabyMonster: []
 --- !u!1 &712987010
 GameObject:
   m_ObjectHideFlags: 0

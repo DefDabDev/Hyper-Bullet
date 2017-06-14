@@ -60,32 +60,32 @@ namespace Monster.Object
         public void copulation()
         {
             transform.Rotate(new Vector3(0, 0, 180));
-            transform.localScale = new Vector3(1.8f, 1.8f);
+            transform.localScale = new Vector3(1, 1);
 
             GameObject obj = null;
             obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
-            obj.transform.localPosition = transform.localPosition + new Vector3(0, 160);
-            obj.transform.localScale = new Vector3(1.8f, 1.8f);
-            obj.transform.SetParent(this.transform);
-            obj.SendMessage("fetter");
-            obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
-            obj.transform.localPosition = transform.localPosition + new Vector3(110, 50);
-            obj.transform.localScale = new Vector3(1,1);
-            obj.transform.SetParent(this.transform);
-            obj.SendMessage("fetter");
-            obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
-            obj.transform.localPosition = transform.localPosition + new Vector3(-110, 50);
+            obj.transform.localPosition = transform.localPosition + new Vector3(0, 225);
             obj.transform.localScale = new Vector3(1, 1);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
-            obj.transform.localPosition = transform.localPosition + new Vector3(-80, -70);
-            obj.transform.localScale = new Vector3(1, 1);
+            obj.transform.localPosition = transform.localPosition + new Vector3(145, 65);
+            obj.transform.localScale = new Vector3(0.5f,0.5f);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
-            obj.transform.localPosition = transform.localPosition + new Vector3(80, -70);
-            obj.transform.localScale = new Vector3(1, 1);
+            obj.transform.localPosition = transform.localPosition + new Vector3(-145, 65);
+            obj.transform.localScale = new Vector3(0.5f, 0.5f);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+            obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(-105, -95);
+            obj.transform.localScale = new Vector3(0.5f, 0.5f);
+            obj.transform.SetParent(this.transform);
+            obj.SendMessage("fetter");
+            obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
+            obj.transform.localPosition = transform.localPosition + new Vector3(105, -95);
+            obj.transform.localScale = new Vector3(0.5f, 0.5f);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
         }

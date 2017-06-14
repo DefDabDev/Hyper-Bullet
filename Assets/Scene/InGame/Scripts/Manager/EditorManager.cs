@@ -6,6 +6,15 @@ namespace GM
 {
     public class EditorManager : MonoBehaviour
     {
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                GameObject obj = MonsterManager.createMonster(Monster.EMonster.MRECT);
+                obj.SendMessage("copulation");
+            }
+        }
+
         void OnGUI()
         {
             int maxH = 100;

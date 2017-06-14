@@ -2,6 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//== < Monster Desc > =================================================
+//
+//  - 사각사각 + 육각육각 + 거북이 몬스터는 각각
+//    (RRECT)   (HEXA)   (PENTA) 를 재사용합니다.
+//    > 사용시엔 코루틴 copulation 을 호출합니다.
+//    > 중심부가 파괴되었을 때엔 코루틴 fetter 를 호출합니다.
+//
+//  - 베이비시터형 몬스터는 재활용 하지 않습니다.
+//
+//======================================================================
+
 namespace GM
 {
     using Monster;
@@ -11,11 +22,13 @@ namespace GM
         static GameObject monsterPrefab_R;  // M Rect
         static GameObject monsterPrefab_P;  // M Penta
         static GameObject monsterPrefab_H;  // M Hexa
+        static GameObject monsterPrefab_RB; // M Hexa
         public static Transform monsterParent;
 
-        public List<CMonster> v_RectMonster = new List<CMonster>();
-        public List<CMonster> v_PentaMonster = new List<CMonster>();
-        public List<CMonster> v_HexaMonster = new List<CMonster>();
+        public List<CMonster> v_RectMonster     = new List<CMonster>();
+        public List<CMonster> v_PentaMonster    = new List<CMonster>();
+        public List<CMonster> v_HexaMonster     = new List<CMonster>();
+        public List<CMonster> v_RectBabyMonster = new List<CMonster>();
         public static List<List<CMonster>> v_Monster = new List<List<CMonster>>();
 
         void Awake()
@@ -23,10 +36,12 @@ namespace GM
             v_Monster.Add(v_RectMonster);
             v_Monster.Add(v_PentaMonster);
             v_Monster.Add(v_HexaMonster);
+            v_Monster.Add(v_RectBabyMonster);
 
             monsterPrefab_R = Resources.Load("Monster/MRect") as GameObject;
             monsterPrefab_P = Resources.Load("Monster/MPenta") as GameObject;
             monsterPrefab_H = Resources.Load("Monster/MHexa") as GameObject;
+            monsterPrefab_RB = Resources.Load("Monster/MRectBaby") as GameObject;
             monsterParent = this.transform;
         }
 
@@ -39,18 +54,6 @@ namespace GM
                 createMonster(EMonster.MPENTA).SetActive(false);
             for (int i = 0; i < 5; i++)
                 createMonster(EMonster.MHEXA).SetActive(false);
-        }
-
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                //GameObject obj = createMonster(EMonster.MRECT);
-                GameObject obj = createMonster(EMonster.MPENTA);
-                //obj.SetActive(false);
-                obj.SendMessage("copulation");
-            }
-
         }
 
         /// <summary>
@@ -122,6 +125,9 @@ namespace GM
                 case EMonster.MHEXA:
                     obj = Instantiate(monsterPrefab_H) as GameObject;
                     break;
+                case EMonster.MRECTBABY:
+                    obj = Instantiate(monsterPrefab_RB) as GameObject;
+                    break;
                 default:
                     break;
             }
@@ -129,10 +135,11 @@ namespace GM
             obj.transform.localPosition = new Vector3(
                 Hero.Hero._hero.transform.position.x + Random.Range(-1280, 1280),
                 Hero.Hero._hero.transform.position.y + Random.Range(-720, 720));
-            obj.transform.localScale = new Vector3(1.5f, 1.5f);
+            obj.transform.localScale = Vector2.one;
 
             return obj;
         }
+        [System.Obsolete("그냥 몬스터 생성만해서 테스트하기 위함, 테스트용이 아니라면 사용하지 마시오.", true)]
         public static GameObject createMonster(EMonster em, Vector2 pos, Vector2 sca)
         {            
             GameObject obj = createMonster(em);

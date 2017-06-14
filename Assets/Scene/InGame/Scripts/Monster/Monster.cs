@@ -33,6 +33,11 @@ namespace Monster
             setTarget();
         }
 
+        void OnDisable()
+        {
+            transform.localRotation = Quaternion.identity;
+        }
+
         /// <summary>
         /// 데미지 수령
         /// </summary>
