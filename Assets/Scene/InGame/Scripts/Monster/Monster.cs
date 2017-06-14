@@ -79,7 +79,7 @@ namespace Monster
         {
             if (other.gameObject.CompareTag("Bullet"))
             {
-                receiveDMG(Hero.Hero._hero.dmg);
+                receiveDMG((uint)Hero.Hero._hero.dmg);
             }
         }
     }

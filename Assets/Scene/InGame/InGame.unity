@@ -236,7 +236,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 809bb7ca64a253844be71f600f88f2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 10
 --- !u!114 &40985908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,6 +450,7 @@ MonoBehaviour:
   v_HexaMonster: []
   v_RectBabyMonster: []
   v_PentaBabyMonster: []
+  v_HexaBabyMonster: []
 --- !u!1 &712987010
 GameObject:
   m_ObjectHideFlags: 0

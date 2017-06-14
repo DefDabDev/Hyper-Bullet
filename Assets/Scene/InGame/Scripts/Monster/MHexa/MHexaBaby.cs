@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace Monster.Object
 {
-    public class MPentaBaby : CMonster
+    public class MHexaBaby : CMonster
     {
         void Awake()
         {
-            GM.MonsterManager.v_Monster[(int)EMonster.MPENTABABY].Add(this);
+            GM.MonsterManager.v_Monster[(int)EMonster.MHEXABABY].Add(this);
         }
 
         void OnEnable()
         {
             setTarget();
-            mSpeed = mSpeed_Penta;
-            mHP = (uint)mHp_Penta;
+            mSpeed = mSpeed_Hexa;
+            mHP = (uint)mHp_Hexa;
 
             StopCoroutine("spawnMonster");
             StartCoroutine("spawnMonster");
@@ -35,7 +35,7 @@ namespace Monster.Object
             {
                 yield return new WaitForSeconds(3);
 
-                GM.MonsterManager.workingMonster(EMonster.MPENTA, 0).transform.position = transform.position;
+                GM.MonsterManager.workingMonster(EMonster.MHEXA, 0).transform.position = transform.position;
             }
         }
     }

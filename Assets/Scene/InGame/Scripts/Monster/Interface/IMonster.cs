@@ -24,7 +24,8 @@ namespace Monster
         MPENTA,
         MHEXA,
         MRECTBABY,
-        MPENTABABY
+        MPENTABABY,
+        MHEXABABY
         /*MRECTRECT,
         MTURTLE*/
     }

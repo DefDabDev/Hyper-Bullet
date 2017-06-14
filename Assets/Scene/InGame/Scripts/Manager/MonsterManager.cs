@@ -26,6 +26,7 @@ namespace GM
         static GameObject monsterPrefab_H;  // M Hexa
         static GameObject monsterPrefab_RB; // M Rect Baby
         static GameObject monsterPrefab_PB; // M Penta Baby
+        static GameObject monsterPrefab_HB; // M Hexa Baby
         public static Transform monsterParent;
 
         public List<CMonster> v_RectMonster     = new List<CMonster>();
@@ -33,6 +34,7 @@ namespace GM
         public List<CMonster> v_HexaMonster     = new List<CMonster>();
         public List<CMonster> v_RectBabyMonster = new List<CMonster>();
         public List<CMonster> v_PentaBabyMonster = new List<CMonster>();
+        public List<CMonster> v_HexaBabyMonster = new List<CMonster>();
         public static List<List<CMonster>> v_Monster = new List<List<CMonster>>();
         #endregion
 
@@ -43,12 +45,14 @@ namespace GM
             v_Monster.Add(v_HexaMonster);
             v_Monster.Add(v_RectBabyMonster);
             v_Monster.Add(v_PentaBabyMonster);
+            v_Monster.Add(v_HexaBabyMonster);
 
             monsterPrefab_R = Resources.Load("Monster/MRect") as GameObject;
             monsterPrefab_P = Resources.Load("Monster/MPenta") as GameObject;
             monsterPrefab_H = Resources.Load("Monster/MHexa") as GameObject;
             monsterPrefab_RB = Resources.Load("Monster/MRectBaby") as GameObject;
             monsterPrefab_PB = Resources.Load("Monster/MPentaBaby") as GameObject;
+            monsterPrefab_PB = Resources.Load("Monster/MHexaBaby") as GameObject;
             monsterParent = this.transform;
         }
 
@@ -136,6 +140,9 @@ namespace GM
                     obj = Instantiate(monsterPrefab_RB) as GameObject;
                     break;
                 case EMonster.MPENTABABY:
+                    obj = Instantiate(monsterPrefab_PB) as GameObject;
+                    break;
+                case EMonster.MHEXABABY:
                     obj = Instantiate(monsterPrefab_PB) as GameObject;
                     break;
                 default:

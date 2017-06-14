@@ -8,7 +8,8 @@ namespace Hero
     {
         public static Hero _hero = null;
 
-        public uint dmg = 10;
+        public int dmg = 10;
+        
 
         void Awake()
         {

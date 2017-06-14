@@ -20,8 +20,8 @@ namespace Monster.Object
         void OnEnable()
         {
             setTarget();
-            mSpeed = mSpeed_Hexa;
-            mHP = (uint)mHp_Hexa;
+            mSpeed = mSpeed_Penta;
+            mHP = (uint)mHp_Penta;
 
             if (myself)
             {
