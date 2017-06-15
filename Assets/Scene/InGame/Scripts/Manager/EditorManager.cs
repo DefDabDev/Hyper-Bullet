@@ -8,10 +8,24 @@ namespace GM
     {
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                GameObject obj = MonsterManager.createMonster(Monster.EMonster.MHEXABABY);
-                //obj.SendMessage("copulation");
+                foreach (GameObject respawn in GameObject.FindGameObjectsWithTag("Monster"))
+                {
+                    if (respawn.activeSelf)
+                    {
+                        if (!respawn.transform.parent.CompareTag("MNG"))
+                            respawn.SendMessage("free");
+                    }
+                }
+                foreach (GameObject respawn in GameObject.FindGameObjectsWithTag("Monster"))
+                {
+                    if (respawn.activeSelf)
+                    {
+                        if (respawn.transform.parent.CompareTag("MNG"))
+                            respawn.SendMessage("receiveDMG", (uint)1000);
+                    }
+                }
             }
         }
 

@@ -40,6 +40,7 @@ namespace Monster.Object
                 myself = true;
                 StopCoroutine("update");
                 StartCoroutine("update");
+                this.transform.SetParent(GM.MonsterManager.monsterParent);
             }
         }
 

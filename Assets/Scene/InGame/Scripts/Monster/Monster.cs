@@ -44,10 +44,21 @@ namespace Monster
         /// <param name="amount">받은 데미지 양</param>
         public void receiveDMG(uint amount)
         {
-            mHP -= amount;
-
-            if (mHP <= 0)
+            if (mHP <= amount)
+            {
+                if (this.transform.childCount > 0)
+                {
+                    for (int i = 0; i < this.transform.childCount; i++)
+                    {
+                        this.transform.GetChild(0).SendMessage("free");
+                    }
+                }
                 this.gameObject.SetActive(false);
+            }
+            else
+            {
+                mHP -= amount;
+            }
         }
 
         /// <summary>

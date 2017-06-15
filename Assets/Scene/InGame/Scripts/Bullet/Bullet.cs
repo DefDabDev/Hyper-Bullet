@@ -40,6 +40,12 @@ public class Bullet : GameBehaviour, IBullet
     private void FixedUpdate()
     {
         Movement();
+
+        if (Hero.Hero._hero.transform.localPosition.x - (Screen.width * 1.9f) > transform.localPosition.x ||
+            Hero.Hero._hero.transform.localPosition.x + (Screen.width * 1.9f) < transform.localPosition.x ||
+            Hero.Hero._hero.transform.localPosition.y - (Screen.height * 1.9f) > transform.localPosition.y ||
+            Hero.Hero._hero.transform.localPosition.y + (Screen.height * 1.9f) < transform.localPosition.y)
+            this.gameObject.SetActive(false);
     }
 
     private void Movement()
