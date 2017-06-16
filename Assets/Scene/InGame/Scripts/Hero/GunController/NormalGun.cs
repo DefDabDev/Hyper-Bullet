@@ -15,7 +15,7 @@ public class NormalGun : GunBehaviour
 
         for (int i = 0; i < _onceShootBullet; ++i)
         {
-            Bullet temp = BulletPool.instance.GetBullet();
+            BulletBehaviour temp = BulletPool.instance.GetBullet();
             temp.SetRotation(angle);
             temp.Shoot(_shotPosition, OWNER.PLAYER, BULLET_EFFECT.NORMAL, _speed, _damage);
             temp.gameObject.SetActive(true);

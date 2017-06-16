@@ -1370,6 +1370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initCount: 50
   _path: Bullet/Bullet
+  _relfectionPath: Bullet/ReflectionBullet
 --- !u!1 &2090881197
 GameObject:
   m_ObjectHideFlags: 0

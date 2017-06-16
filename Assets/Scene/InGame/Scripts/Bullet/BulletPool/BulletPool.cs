@@ -2,8 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AL.ALUtil;
+using System;
 
 public class BulletPool : ALSingletonComponent<BulletPool> {
+
+    [SerializeField]
+    private int _initCount = 50;
+
+    [SerializeField]
+    private string _path = string.Empty;
+
+    [SerializeField]
+    private string _relfectionPath = string.Empty;
+
+    private Transform _bulletParent;
+    private List<BulletBehaviour> _bulletList = new List<BulletBehaviour>();
 
     private void Awake()
     {
@@ -13,23 +26,30 @@ public class BulletPool : ALSingletonComponent<BulletPool> {
 
     private void InitPool()
     {
+        bool temp = false;
+        string tempPath = string.Empty;
         for (int i = 0; i < _initCount; ++i)
         {
-            _bulletList.Add(CreateBullet());
+            if (temp)
+                tempPath = _path;
+            else
+                tempPath = _relfectionPath;
+            temp = !temp;
+            _bulletList.Add(CreateBullet(tempPath));
         }
     }
 
-    private Bullet CreateBullet()
+    private BulletBehaviour CreateBullet(string path)
     {
-        Bullet temp = null;
-        temp = Resources.Load<Bullet>(_path);
-        temp = Instantiate(temp, Vector3.zero, Quaternion.identity, _bulletParent) as Bullet;
+        BulletBehaviour temp = null;
+        temp = Resources.Load<BulletBehaviour>(path);
+        temp = Instantiate(temp, Vector3.zero, Quaternion.identity, _bulletParent);
         temp.transform.localScale = Vector3.one;
         temp.gameObject.SetActive(false);
         return temp;
     }
 
-    public Bullet GetBullet()
+    public BulletBehaviour GetBullet()
     {
         for (int i = 0; i < _bulletList.Count; ++i)
         {
@@ -37,17 +57,21 @@ public class BulletPool : ALSingletonComponent<BulletPool> {
                 return _bulletList[i];
         }
 
-        Bullet temp = CreateBullet();
+        BulletBehaviour temp = CreateBullet(_path);
         _bulletList.Add(temp);
         return temp;
     }
 
-    [SerializeField]
-    private int _initCount = 50;
+    public BulletBehaviour GetRelfectionBullet()
+    {
+        for (int i = 0; i < _bulletList.Count; ++i)
+        {
+            if (!_bulletList[i].gameObject.activeSelf)
+                return _bulletList[i];
+        }
 
-    [SerializeField]
-    private string _path = string.Empty;
-
-    private Transform _bulletParent;
-    private List<Bullet> _bulletList = new List<Bullet>();
+        BulletBehaviour temp = CreateBullet(_relfectionPath);
+        _bulletList.Add(temp);
+        return temp;
+    }
 }

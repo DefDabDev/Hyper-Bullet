@@ -86,13 +86,13 @@ namespace Monster
             moveVariation = (moveVariation == 1 ? 0.03f : 1);
         }
 
-        void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.gameObject.CompareTag("Bullet"))
-            {
-                receiveDMG((uint)Hero.Hero._hero.dmg);
-                other.gameObject.SetActive(false);
-            }
-        }
+        //void OnTriggerEnter2D(Collider2D other)
+        //{
+        //    if (other.gameObject.CompareTag("Bullet"))
+        //    {
+        //        receiveDMG((uint)Hero.Hero._hero.dmg);
+        //        other.gameObject.SetActive(false);
+        //    }
+        //}
     }
 }
