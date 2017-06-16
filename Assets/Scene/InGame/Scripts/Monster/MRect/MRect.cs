@@ -38,7 +38,7 @@ namespace Monster.Object
         {
             while (true)
             {
-                transform.Rotate(new Vector3(0, 0, -10 * Time.deltaTime));
+                transform.Rotate(new Vector3(0, 0, -50 * Time.deltaTime));
 
                 moveToTarget();
                 yield return null;
@@ -50,6 +50,8 @@ namespace Monster.Object
         /// </summary>
         public void copulation()
         {
+            alone = true;
+
             GameObject obj = null;
             obj = GM.MonsterManager.workingMonster(EMonster.MRECT, 0);
             obj.transform.localPosition = transform.localPosition + new Vector3(0, 150);
