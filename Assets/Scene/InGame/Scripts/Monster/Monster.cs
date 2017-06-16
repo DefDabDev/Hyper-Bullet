@@ -18,16 +18,19 @@ namespace Monster
         protected uint mHP = 0;         // hp
         public uint hp { get { return mHP; } }
         
-        public static float mSpeed_Rect = 3f;
-        public static float mSpeed_Penta = 3f;
-        public static float mSpeed_Hexa = 3f;
+        public static float mSpeed_Rect = 2;
+        public static float mSpeed_Penta = 2;
+        public static float mSpeed_Hexa = 2;
 
-        public static float mHp_Rect = 100;
-        public static float mHp_Penta = 100;
-        public static float mHp_Hexa = 100;
+        public static float mHp_Rect = 200;
+        public static float mHp_Penta = 250;
+        public static float mHp_Hexa = 220;
+
+        public bool alone = false;
 
         void OnEnable()
         {
+            GM.MonsterManager.monsterSetPostion(this.gameObject);
             mSpeed = 1;
             mHP = 1;
             setTarget();
@@ -35,6 +38,8 @@ namespace Monster
 
         void OnDisable()
         {
+            alone = false;
+
             transform.localRotation = Quaternion.identity;
         }
 
@@ -50,7 +55,7 @@ namespace Monster
                 {
                     for (int i = 0; i < this.transform.childCount; i++)
                     {
-                        this.transform.GetChild(0).SendMessage("free");
+                        this.transform.GetChild(i).SendMessage("free");
                     }
                 }
                 this.gameObject.SetActive(false);
@@ -75,7 +80,19 @@ namespace Monster
         public void moveToTarget()
         {
             if (!target.Equals(null))
+            {
                 transform.position = Vector3.MoveTowards(transform.position, target.position, mSpeed * Time.deltaTime * moveVariation);
+                
+                if (alone)
+                {
+                    Vector3 difference = target.position - transform.position;
+                    difference.Normalize();
+                    float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.Euler(0f, 0f, rotation_z + 90);
+                }
+            }
+            else
+                this.gameObject.SetActive(false);
         }
 
         /// <summary>

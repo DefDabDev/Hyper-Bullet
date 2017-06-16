@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class NormalGun : GunBehaviour
 {
+    public CartridgeGenerator cg;
+    void Awake()
+    {
+        cg = GetComponent<CartridgeGenerator>();
+    }
 
     protected override IEnumerator Fire(float angle)
     {
@@ -19,6 +24,10 @@ public class NormalGun : GunBehaviour
             temp.SetRotation(angle);
             temp.Shoot(_shotPosition, OWNER.PLAYER, BULLET_EFFECT.NORMAL, _speed, _damage);
             temp.gameObject.SetActive(true);
+            Cartridge c = cg.GetCartridge();
+            c.gameObject.SetActive(true);
+            c.transform.localPosition = transform.localPosition;
+            c.Emission(angle);
             yield return new WaitForSeconds(_shootDelay);
         }
         yield return new WaitForSeconds(_fireDelay);

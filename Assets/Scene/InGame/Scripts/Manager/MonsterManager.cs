@@ -165,29 +165,29 @@ namespace GM
             return obj;
         }
 
-        static void monsterSetPostion(GameObject obj)
+        public static void monsterSetPostion(GameObject obj)
         {
             switch (Random.Range(0, 4))
             {
                 case 0:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.position.x + Random.Range(-1400, -1280),
-                        Hero.Hero._hero.transform.position.y + Random.Range(720, 900));
+                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1400, -1280),
+                        Hero.Hero._hero.transform.localPosition.y + Random.Range(720, 900));
                     break;
                 case 1:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.position.x + Random.Range(-1400, -1280),
-                        Hero.Hero._hero.transform.position.y + Random.Range(-900, -720));
+                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1400, -1280),
+                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-900, -720));
                     break;
                 case 2:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.position.x + Random.Range(1280, 1400),
-                        Hero.Hero._hero.transform.position.y + Random.Range(720, 900));
+                        Hero.Hero._hero.transform.localPosition.x + Random.Range(1280, 1400),
+                        Hero.Hero._hero.transform.localPosition.y + Random.Range(720, 900));
                     break;
                 case 3:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.position.x + Random.Range(1280, 1400),
-                        Hero.Hero._hero.transform.position.y + Random.Range(-900, -720));
+                        Hero.Hero._hero.transform.localPosition.x + Random.Range(1280, 1400),
+                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-900, -720));
                     break;
             }
         }

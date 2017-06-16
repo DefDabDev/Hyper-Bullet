@@ -36,16 +36,16 @@ public abstract class GunBehaviour : MonoBehaviour
     protected int _damage;
 
     //[SerializeField]
-    public static float _speed = 100;
+    public static float _speed = 350;
 
     [SerializeField]
     protected int _onceShootBullet = 1;
 
     //[SerializeField]
-    public static float _fireDelay = 0.1f;
+    public static float _fireDelay = 0.2f;
 
     //[SerializeField]
-    public static float _shootDelay = 0.1f;
+    public static float _shootDelay = 0;
 
     [SerializeField]
     protected float _aceelScale;

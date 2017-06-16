@@ -48,9 +48,10 @@ namespace Monster.Object
         {
             while (true)
             {
-                transform.Rotate(new Vector3(0, 0, -10 * Time.deltaTime));
+                transform.Rotate(new Vector3(0, 0, -50 * Time.deltaTime));
 
                 moveToTarget();
+
                 yield return null;
             }
         }
@@ -60,6 +61,8 @@ namespace Monster.Object
         /// </summary>
         public void copulation()
         {
+            alone = true;
+
             transform.Rotate(new Vector3(0, 0, 180));
             transform.localScale = new Vector3(1.4f, 1.4f);
 
