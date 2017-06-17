@@ -27,6 +27,7 @@ namespace Monster
         public static float mHp_Hexa = 220;
 
         public bool alone = false;
+        public Vector3 moveVector = Vector3.zero;
 
         void OnEnable()
         {
@@ -81,14 +82,16 @@ namespace Monster
         {
             if (!target.Equals(null))
             {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, mSpeed * Time.deltaTime * moveVariation);
-                
+                moveVector = Vector3.MoveTowards(transform.position, target.position, mSpeed * Time.deltaTime * moveVariation);
+                transform.position = moveVector;
+
                 if (alone)
                 {
                     Vector3 difference = target.position - transform.position;
                     difference.Normalize();
                     float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.Euler(0f, 0f, rotation_z + 90);
+                    moveVector = transform.up;
                 }
             }
             else

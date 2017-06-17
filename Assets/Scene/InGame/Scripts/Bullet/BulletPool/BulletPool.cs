@@ -53,7 +53,7 @@ public class BulletPool : ALSingletonComponent<BulletPool> {
     {
         for (int i = 0; i < _bulletList.Count; ++i)
         {
-            if (!_bulletList[i].gameObject.activeSelf)
+            if (!_bulletList[i].gameObject.activeSelf && _bulletList[i].GetType().Name.Equals("Bullet"))
                 return _bulletList[i];
         }
 
@@ -66,7 +66,7 @@ public class BulletPool : ALSingletonComponent<BulletPool> {
     {
         for (int i = 0; i < _bulletList.Count; ++i)
         {
-            if (!_bulletList[i].gameObject.activeSelf)
+            if (!_bulletList[i].gameObject.activeSelf && _bulletList[i].GetType().Name.Equals("ReflectionBullet"))
                 return _bulletList[i];
         }
 

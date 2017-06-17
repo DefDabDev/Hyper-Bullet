@@ -5,19 +5,31 @@ using UnityEngine;
 
 public class ReflectionGun : GunBehaviour
 {
+    private void Awake()
+    {
+        //_fireDelay = 0.1f;
+        //_speed = 1400f;
+    }
+
     protected override IEnumerator Fire(float angle)
     {
         if (_state.Equals(GUN_STATE.FIRE))
             yield break;
 
+
         _state = GUN_STATE.FIRE;
 
         for (int i = 0; i < _onceShootBullet; ++i)
         {
+            float aim = UnityEngine.Random.Range(angle - _aimAccuracy, angle + _aimAccuracy);
             BulletBehaviour temp = BulletPool.instance.GetRelfectionBullet();
-            temp.SetRotation(angle);
             temp.Shoot(_shotPosition, OWNER.PLAYER, BULLET_EFFECT.NORMAL, _speed, _damage);
+            temp.SetRotation(aim);
             temp.gameObject.SetActive(true);
+            Cartridge c = cg.GetCartridge();
+            c.gameObject.SetActive(true);
+            c.transform.localPosition = transform.localPosition;
+            c.Emission(angle);
             yield return new WaitForSeconds(_shootDelay);
         }
         yield return new WaitForSeconds(_fireDelay);

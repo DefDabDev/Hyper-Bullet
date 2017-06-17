@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class NormalGun : GunBehaviour
 {
-    public CartridgeGenerator cg;
-    void Awake()
+    private void Awake()
     {
-        cg = GetComponent<CartridgeGenerator>();
+        //_fireDelay = 0.15f;
+        //_speed = 800f;
     }
 
     protected override IEnumerator Fire(float angle)
@@ -17,12 +17,12 @@ public class NormalGun : GunBehaviour
             yield break;
 
         _state = GUN_STATE.FIRE;
-
         for (int i = 0; i < _onceShootBullet; ++i)
         {
+            float aim = UnityEngine.Random.Range(angle - _aimAccuracy, angle + _aimAccuracy);
             BulletBehaviour temp = BulletPool.instance.GetBullet();
-            temp.SetRotation(angle);
             temp.Shoot(_shotPosition, OWNER.PLAYER, BULLET_EFFECT.NORMAL, _speed, _damage);
+            temp.SetRotation(aim);
             temp.gameObject.SetActive(true);
             Cartridge c = cg.GetCartridge();
             c.gameObject.SetActive(true);

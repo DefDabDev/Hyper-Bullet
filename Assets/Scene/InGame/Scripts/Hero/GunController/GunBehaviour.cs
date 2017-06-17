@@ -10,22 +10,6 @@ public enum GUN_STATE
 
 public abstract class GunBehaviour : MonoBehaviour
 {
-
-    public T GetGun<T>()
-    {
-        return GetComponent<T>();
-    }
-
-    public void PullTrriger(float angle)
-    {
-        if (_state.Equals(GUN_STATE.FIRE))
-            return;
-
-        StartCoroutine("Fire", angle);
-    }
-
-    protected abstract IEnumerator Fire(float angle);
-
     [SerializeField]
     protected GUN_STATE _state;
 
@@ -36,7 +20,7 @@ public abstract class GunBehaviour : MonoBehaviour
     protected int _damage;
 
     //[SerializeField]
-    public static float _speed = 350;
+    public static float _speed = 700f;
 
     [SerializeField]
     protected int _onceShootBullet = 1;
@@ -52,4 +36,29 @@ public abstract class GunBehaviour : MonoBehaviour
 
     [SerializeField]
     protected float _deaceelScale;
+
+    [SerializeField]
+    protected float _aimAccuracy = 10f;
+
+    public CartridgeGenerator cg;
+    void Awake()
+    {
+        if (cg == null)
+            cg = GetComponent<CartridgeGenerator>();
+    }
+
+    public T GetGun<T>()
+    {
+        return GetComponent<T>();
+    }
+
+    public void PullTrriger(float angle)
+    {
+        if (_state.Equals(GUN_STATE.FIRE))
+            return;
+
+        StartCoroutine("Fire", angle);
+    }
+
+    protected abstract IEnumerator Fire(float angle);
 }

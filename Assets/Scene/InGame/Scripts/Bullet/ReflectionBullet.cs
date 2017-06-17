@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Monster;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,6 @@ public class ReflectionBullet : BulletBehaviour
 
     public override void Shoot(Transform ownerTransfrom, OWNER owner, BULLET_EFFECT effect)
     {
-        _reflectionCount = 3;
         _state = BULLET_STATE.SHOOTING;
         transform.rotation = ownerTransfrom.rotation;
         transform.position = ownerTransfrom.position;
@@ -39,7 +39,6 @@ public class ReflectionBullet : BulletBehaviour
 
     public override void Shoot(Transform ownerTransfrom, OWNER owner, BULLET_EFFECT effect, float speed, int damage)
     {
-        _reflectionCount = 3;
         _state = BULLET_STATE.SHOOTING;
         transform.position = ownerTransfrom.position;
         transform.rotation = ownerTransfrom.rotation;
@@ -52,6 +51,7 @@ public class ReflectionBullet : BulletBehaviour
     private void OnDisable()
     {
         _state = BULLET_STATE.SLEEP;
+        _reflectionCount = 3;
     }
 
     private void FixedUpdate()
@@ -69,7 +69,7 @@ public class ReflectionBullet : BulletBehaviour
     {
         if (collision.CompareTag("Monster"))
         {
-            float temp = Vector3.Angle(transform.up, collision.transform.up);
+            float temp = Vector3.Angle(transform.up, collision.GetComponent<CMonster>().moveVector);
             temp = Mathf.Rad2Deg * temp;
             SetRotation(temp);
             collision.SendMessage("receiveDMG", (uint)_damage);
