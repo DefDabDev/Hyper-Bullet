@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +8,7 @@ namespace AL.ALUtil
     {
         public static float Lerp(float began, float end, float time)
         {
-            float distance = end - began;
-            if (Mathf.Abs(distance) <= 0.001f || time > 1f)
-            {
-                return end;
-            }
-            return (began + (distance * time));
+            return (1 - time) * began + (time * end);
         }
 
         public static Vector2 Lerp(Vector2 began, Vector2 end, float time)

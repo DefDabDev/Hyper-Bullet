@@ -33,4 +33,10 @@ public class NormalGun : GunBehaviour
         yield return new WaitForSeconds(_fireDelay);
         _state = GUN_STATE.SLEEP;
     }
+
+    public override void ChangeGun()
+    {
+        UIManager.instance.ChangeUI("NormalGun", 1f);
+        image.sprite = _playerImage;
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using AL.ALUtil;
 using System;
 
-public class BulletPool : ALSingletonComponent<BulletPool> {
+public class BulletPool : ALComponentSingleton<BulletPool> {
 
     [SerializeField]
     private int _initCount = 50;

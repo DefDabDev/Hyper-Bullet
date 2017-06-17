@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class HeroAttack : MonoBehaviour
 {
+    [SerializeField]
+    private GunBehaviour _gun;
+
+    Vector2 _rotateVector;
+    const float correction = 90f * Mathf.Deg2Rad;
+
+    private void Start()
+    {
+        _gun.ChangeGun();
+    }
 
     private void Update()
     {
@@ -20,10 +30,4 @@ public class HeroAttack : MonoBehaviour
         float value = (Mathf.Atan2(_rotateVector.y, _rotateVector.x) - correction) * Mathf.Rad2Deg;
         _gun.PullTrriger(value);
     }
-
-    [SerializeField]
-    private GunBehaviour _gun;
-
-    Vector2 _rotateVector;
-    const float correction = 90f * Mathf.Deg2Rad;
 }

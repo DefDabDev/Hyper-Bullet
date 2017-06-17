@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum GUN_STATE
 {
@@ -15,6 +16,9 @@ public abstract class GunBehaviour : MonoBehaviour
 
     [SerializeField]
     protected Transform _shotPosition;
+
+    [SerializeField]
+    protected Sprite _playerImage;
 
     [SerializeField]
     protected int _damage;
@@ -40,7 +44,11 @@ public abstract class GunBehaviour : MonoBehaviour
     [SerializeField]
     protected float _aimAccuracy = 10f;
 
+    private Image _image = null;
+    public Image image { get { return _image ?? (_image = cg.gameObject.GetComponent<Image>()); } }
+
     public CartridgeGenerator cg;
+
     void Awake()
     {
         if (cg == null)
@@ -61,4 +69,5 @@ public abstract class GunBehaviour : MonoBehaviour
     }
 
     protected abstract IEnumerator Fire(float angle);
+    public abstract void ChangeGun();
 }

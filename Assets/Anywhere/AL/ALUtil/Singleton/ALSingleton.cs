@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace AL.ALUtil
 {
+    /// <summary>
+    /// Normal Singleton
+    /// </summary>
+    /// <typeparam name="T">Type</typeparam>
     public class ALSingleton<T> where T : ALSingleton<T>, new()
     {
         static T _instance = null;
-        /// <summary>
-        /// Singleton객체를 리턴 함
-        /// </summary>
         public static T instance
         {
             get
