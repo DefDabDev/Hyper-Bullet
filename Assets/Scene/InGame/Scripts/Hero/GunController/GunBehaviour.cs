@@ -30,10 +30,10 @@ public abstract class GunBehaviour : MonoBehaviour
     protected int _onceShootBullet = 1;
 
     //[SerializeField]
-    public static float _fireDelay = 0.2f;
+    public static float _fireDelay = 0.5f;
 
     //[SerializeField]
-    public static float _shootDelay = 0;
+    public static float _shootDelay = 0.2f;
 
     [SerializeField]
     protected float _aceelScale;
@@ -43,6 +43,10 @@ public abstract class GunBehaviour : MonoBehaviour
 
     [SerializeField]
     protected float _aimAccuracy = 10f;
+
+    [SerializeField]
+    protected int _magazineSize = 10;
+    protected int _realMagazine = 0;
 
     private Image _image = null;
     public Image image { get { return _image ?? (_image = cg.gameObject.GetComponent<Image>()); } }

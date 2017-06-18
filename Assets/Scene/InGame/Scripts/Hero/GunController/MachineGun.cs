@@ -7,6 +7,7 @@ public class MachineGun : GunBehaviour {
 
     private void Awake()
     {
+        _realMagazine = _magazineSize;
         //_speed = 1000f;
         //_fireDelay = 0.05f;
     }
@@ -30,13 +31,21 @@ public class MachineGun : GunBehaviour {
             c.Emission(angle);
             yield return new WaitForSeconds(_shootDelay);
         }
-        yield return new WaitForSeconds(_fireDelay);
+        --_realMagazine;
+        if (_realMagazine < 0)
+        {
+            UIManager.instance.Reload(_fireDelay);
+            _realMagazine = _magazineSize;
+            yield return new WaitForSeconds(_fireDelay);
+        }
+        else
+            UIManager.instance.DecreaseGauge(_realMagazine, _shootDelay);
         _state = GUN_STATE.SLEEP;
     }
 
     public override void ChangeGun()
     {
-        UIManager.instance.ChangeUI("MachineGun", 1f);
+        UIManager.instance.ChangeUI("MachineGun", _magazineSize);
         image.sprite = _playerImage;
     }
 }

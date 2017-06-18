@@ -39,8 +39,8 @@ namespace AL.ALUtil
         public float decreaseFactor { set { _decreaseFactor = value; } get { return _decreaseFactor; } }
 
         [SerializeField]
-        private Transform[] _targets;
-        public Transform[] targets {  get { return _targets; } }
+        private List<Transform> _targets;
+        public List<Transform> targets { get { return _targets; } }
 
         private Vector3[] _originPosition;
         private float _shakeDurationValue = 0;
@@ -49,8 +49,8 @@ namespace AL.ALUtil
 
         void Awake()
         {
-            _originPosition = new Vector3[targets.Length];
-            for (int i = 0; i < targets.Length; ++i)
+            _originPosition = new Vector3[targets.Count];
+            for (int i = 0; i < targets.Count; ++i)
             {
                 _originPosition[i] = targets[i].localPosition;
             }
@@ -77,7 +77,7 @@ namespace AL.ALUtil
                 if (_shakeDurationValue > 0)
                 {
                     Vector3 randomValue = Random.insideUnitSphere * shakeAmount;
-                    for (int i = 0; i < _targets.Length; ++i)
+                    for (int i = 0; i < _targets.Count; ++i)
                     {
                         if (_spaceType.Equals(SPACE_TYPE.LOCAL))
                             _targets[i].localPosition = Vector3.Lerp(_targets[i].localPosition, _originPosition[i] + randomValue, 0.05f);
@@ -89,7 +89,7 @@ namespace AL.ALUtil
                 else
                 {
                     _shakeDurationValue = 0f;
-                    for (int i = 0; i < _targets.Length; ++i)
+                    for (int i = 0; i < _targets.Count; ++i)
                     {
                         if (_spaceType.Equals(SPACE_TYPE.LOCAL))
                             _targets[i].localPosition = _originPosition[i];
@@ -114,7 +114,7 @@ namespace AL.ALUtil
             {
                 if (_shakeDurationValue > 0)
                 {
-                    for (int i = 0; i < _targets.Length; ++i)
+                    for (int i = 0; i < _targets.Count; ++i)
                     {
                         Vector3 randomValue = Random.insideUnitSphere * shakeAmount;
                         if (_spaceType.Equals(SPACE_TYPE.LOCAL))
@@ -127,7 +127,7 @@ namespace AL.ALUtil
                 else
                 {
                     _shakeDurationValue = 0f;
-                    for (int i = 0; i < _targets.Length; ++i)
+                    for (int i = 0; i < _targets.Count; ++i)
                     {
                         if (_spaceType.Equals(SPACE_TYPE.LOCAL))
                             _targets[i].localPosition = _originPosition[i];

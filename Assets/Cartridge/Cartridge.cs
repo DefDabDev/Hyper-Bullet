@@ -50,7 +50,7 @@ public class Cartridge : MonoBehaviour
                 float timer = 0f;
                 while (true)
                 {
-                    if (force <= 0f)
+                    if (timer >= 1f)
                         break;
 
                     timer += Time.deltaTime;
@@ -72,7 +72,7 @@ public class Cartridge : MonoBehaviour
         float timer = 0f;
         while (true)
         {
-            if (transform.localScale.Equals(Vector3.zero))
+            if (timer >= 1f)
                 break;
 
             timer += Time.deltaTime;

@@ -11,6 +11,7 @@ public class LaserGun : GunBehaviour
 
     private void Awake()
     {
+        _realMagazine = _magazineSize;
         _line = GetComponent<LineRenderer>();
     }
 
@@ -26,14 +27,13 @@ public class LaserGun : GunBehaviour
 
         float radianAngle = (angle + 90) * Mathf.Deg2Rad;
         Vector3 endPoint = Vector3.zero;
-        endPoint.x = Mathf.Cos(radianAngle) * 12f;
-        endPoint.y = Mathf.Sin(radianAngle) * 12f;
+        endPoint.x = Mathf.Cos(radianAngle) * 16.5f;
+        endPoint.y = Mathf.Sin(radianAngle) * 16.5f;
         endPoint.z = 0f;
 
-        Vector3 offset = transform.position;
-        Vector3 temp = Vector3.zero;
+        endPoint += transform.parent.position;
         float timer = 0f;
-        while(true)
+        while (true)
         {
             if (_line.startWidth >= 0.2f)
             {
@@ -44,23 +44,25 @@ public class LaserGun : GunBehaviour
                 c.Emission(angle);
             }
 
-            if (_line.startWidth <= 0f)
-            {
-                _line.startWidth = 0f;
-                _line.endWidth = 0f;
+            if (timer >= 1f)
                 break;
-            }
 
-            //temp = offset - transform.position;
-            _line.SetPosition(0, transform.parent.position /*+ temp*/);
-            _line.SetPosition(1, endPoint /*+ temp*/);
-            Debug.Log(transform.parent.position);
+            _line.SetPosition(0, transform.parent.position);
+            _line.SetPosition(1, endPoint);
             timer += Time.deltaTime;
             _line.startWidth = ALLerp.Lerp(_line.startWidth, 0f, timer);
             _line.endWidth = ALLerp.Lerp(_line.endWidth, 0f, timer);
             yield return null;
         }
-        yield return new WaitForSeconds(_fireDelay);
+        --_realMagazine;
+        if (_realMagazine < 0)
+        {
+            UIManager.instance.Reload(_fireDelay);
+            _realMagazine = _magazineSize;
+            yield return new WaitForSeconds(_fireDelay);
+        }
+        else
+            UIManager.instance.DecreaseGauge(_realMagazine, _fireDelay);
         _line.SetPosition(0, Vector3.zero);
         _line.SetPosition(1, Vector3.zero);
         _state = GUN_STATE.SLEEP;
@@ -68,7 +70,7 @@ public class LaserGun : GunBehaviour
 
     public override void ChangeGun()
     {
-        UIManager.instance.ChangeUI("LaserGun", 1f);
+        UIManager.instance.ChangeUI("LaserGun", _magazineSize);
         image.sprite = _playerImage;
     }
 

@@ -7,7 +7,8 @@ public class NormalGun : GunBehaviour
 {
     private void Awake()
     {
-        //_fireDelay = 0.15f;
+        _realMagazine = _magazineSize;
+        //_shootDelay = 0.15f;
         //_speed = 800f;
     }
 
@@ -30,13 +31,23 @@ public class NormalGun : GunBehaviour
             c.Emission(angle);
             yield return new WaitForSeconds(_shootDelay);
         }
-        yield return new WaitForSeconds(_fireDelay);
+
+        --_realMagazine;
+        if (_realMagazine < 0)
+        {
+            UIManager.instance.Reload(_fireDelay);
+            _realMagazine = _magazineSize;
+            yield return new WaitForSeconds(_fireDelay);
+        }
+        else
+            UIManager.instance.DecreaseGauge(_realMagazine, _shootDelay);
+
         _state = GUN_STATE.SLEEP;
     }
 
     public override void ChangeGun()
     {
-        UIManager.instance.ChangeUI("NormalGun", 1f);
+        UIManager.instance.ChangeUI("NormalGun", _magazineSize);
         image.sprite = _playerImage;
     }
 }
