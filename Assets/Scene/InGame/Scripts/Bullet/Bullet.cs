@@ -65,6 +65,9 @@ public class Bullet : BulletBehaviour
     {
         if (collision.CompareTag("Monster"))
         {
+            ParticleSystem effect = EffectPool.instance.GetEffect();
+            effect.transform.position = transform.position;
+            effect.Play();
             collision.SendMessage("receiveDMG", (uint)_damage);
             gameObject.SetActive(false);
         }

@@ -74,7 +74,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 85, y: 85}
+  m_Size: {x: 210, y: 210}
   m_EdgeRadius: 0
 --- !u!114 &114023602233317814
 MonoBehaviour:
@@ -90,6 +90,8 @@ MonoBehaviour:
   target: {fileID: 0}
   mSpeed: 0
   mHP: 0
+  alone: 0
+  moveVector: {x: 0, y: 0, z: 0}
 --- !u!114 &114356918038824344
 MonoBehaviour:
   m_ObjectHideFlags: 1

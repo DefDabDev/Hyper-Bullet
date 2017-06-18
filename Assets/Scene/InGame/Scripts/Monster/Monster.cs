@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AL.ALUtil;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,7 +41,6 @@ namespace Monster
         void OnDisable()
         {
             alone = false;
-
             transform.localRotation = Quaternion.identity;
         }
 
@@ -59,6 +59,7 @@ namespace Monster
                         this.transform.GetChild(i).SendMessage("free");
                     }
                 }
+                CameraShaker.instance.Shake();
                 this.gameObject.SetActive(false);
             }
             else
