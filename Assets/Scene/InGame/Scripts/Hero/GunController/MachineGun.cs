@@ -26,7 +26,7 @@ public class MachineGun : GunBehaviour {
             temp.gameObject.SetActive(true);
             Cartridge c = cg.GetCartridge();
             c.gameObject.SetActive(true);
-            c.transform.localPosition = transform.localPosition;
+            c.transform.localPosition = transform.parent.localPosition;
             c.Emission(angle);
             yield return new WaitForSeconds(_shootDelay);
         }

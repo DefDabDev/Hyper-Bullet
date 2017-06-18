@@ -282,8 +282,8 @@ RectTransform:
   m_LocalScale: {x: 0.9, y: 1, z: 1}
   m_Children:
   - {fileID: 853359792}
-  - {fileID: 1995863522}
   - {fileID: 925461225}
+  - {fileID: 1995863522}
   - {fileID: 29740678}
   m_Father: {fileID: 607670041}
   m_RootOrder: 1
@@ -405,7 +405,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4219f037f583c41428afd0224788da5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gun: {fileID: 29740680}
+  _currentGun: 3
+  _guns:
+  - {fileID: 853359793}
+  - {fileID: 925461226}
+  - {fileID: 1995863523}
+  - {fileID: 29740680}
 --- !u!114 &40985911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1328,7 +1333,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 40985902}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1735,7 +1740,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 40985902}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

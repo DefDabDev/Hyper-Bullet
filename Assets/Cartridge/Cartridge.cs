@@ -17,9 +17,6 @@ public class Cartridge : MonoBehaviour
     private float _friction = 3f;
 
     [SerializeField]
-    private float _rotationFriction = 3f;
-
-    [SerializeField]
     private float _randomDistance = 10;
 
     [SerializeField]
