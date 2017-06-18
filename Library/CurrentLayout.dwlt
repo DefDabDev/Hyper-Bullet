@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 881, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 68
+  controlID: 130
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 69
+  controlID: 131
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +158,7 @@ MonoBehaviour:
   m_MinSize: {x: 604, y: 221}
   m_MaxSize: {x: 12004, y: 4021}
   vertical: 0
-  controlID: 70
+  controlID: 132
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_MinSize: {x: 336, y: 271}
   m_MaxSize: {x: 14006, y: 10021}
   vertical: 0
-  controlID: 93
+  controlID: 165
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -465,7 +465,7 @@ MonoBehaviour:
     width: 569
     height: 609
   m_SceneLighting: 0
-  lastFramingTime: 32.81480313294571
+  lastFramingTime: 1040.3571101769417
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
@@ -499,9 +499,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 22
+    m_Target: 14.525475
     speed: 2
-    m_Value: 22
+    m_Value: 14.525475
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -611,23 +611,23 @@ MonoBehaviour:
     height: 609
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 2e290000
-    m_LastClickedID: 10542
-    m_ExpandedIDs: e0fbffff00000000e6280000042900001c290000722900008a290000dc290000
+    m_SelectedIDs: 14e4feff
+    m_LastClickedID: -72684
+    m_ExpandedIDs: 14e4feff5c3fffffe0fbffff00000000e6280000fe2800001c29000072290000dc290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: BG
-      m_OriginalName: BG
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10610
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -699,19 +699,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scene/InGame/Scripts/Manager
+    - Assets/Scene/InGame/Sprites/UI/BulletSelectUI
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scene/InGame/Scripts/Manager
+  - Assets/Scene/InGame/Sprites/UI/BulletSelectUI
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: C:\Users\kyech\Desktop\Hyper-Bullet
+  m_LastProjectPath: D:\Unity project\Hyper-Bullet
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 255}
-    m_SelectedIDs: 66260000
-    m_LastClickedID: 9830
-    m_ExpandedIDs: 0000000024260000562600007e260000982600009a260000ac260000b0260000b4260000062700002c270000322700005c2700006c2700008827000098270000ae270000c82700000c2800000e2800002228000024280000442a0000462a0000482a000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 271}
+    m_SelectedIDs: a4360000
+    m_LastClickedID: 13988
+    m_ExpandedIDs: 0000000024260000562600007e26000092260000982600009a260000ac260000b4260000062700002c270000322700005c2700006c270000722700008827000098270000ae270000c82700000c2800000e2800002228000024280000442a0000462a0000482a000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -793,7 +793,7 @@ MonoBehaviour:
     m_NewAssetIndexInList: -1
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
-  m_DirectoriesAreaWidth: 115
+  m_DirectoriesAreaWidth: 159
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52

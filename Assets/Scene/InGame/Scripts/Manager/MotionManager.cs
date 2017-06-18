@@ -56,6 +56,13 @@ namespace GM
         public void checkSelectBulletUI()
         {
             bulletInterface.SetBool("OnOff", bulletInterface.GetBool("OnOff") ? false : true);
+            for (int i = 0; i < MonsterManager.v_Monster.Count; i++)
+            {
+                for (int j = 0; j < MonsterManager.v_Monster[i].Count; j++)
+                {
+                    Monster.CMonster.Variation();
+                }
+            }
         }
     }
 }
