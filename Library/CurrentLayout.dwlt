@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 6}
-  m_MinSize: {x: 950, y: 521}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_MinSize: {x: 306, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 81
+  controlID: 149
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -116,10 +116,10 @@ MonoBehaviour:
     y: 0
     width: 344
     height: 947
-  m_MinSize: {x: 234, y: 471}
-  m_MaxSize: {x: 10004, y: 14021}
+  m_MinSize: {x: 234, y: 492}
+  m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 115
+  controlID: 81
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -185,10 +185,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 815, y: 471}
-  m_MaxSize: {x: 22010, y: 14021}
+  m_MinSize: {x: 817, y: 492}
+  m_MaxSize: {x: 22012, y: 14042}
   vertical: 0
-  controlID: 114
+  controlID: 21
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -251,8 +251,8 @@ MonoBehaviour:
     y: 0
     width: 344
     height: 473
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -276,8 +276,8 @@ MonoBehaviour:
     y: 0
     width: 567
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -301,8 +301,8 @@ MonoBehaviour:
     y: 0
     width: 1009
     height: 486
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -389,7 +389,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 3ab8ffff84dbffffdef7ffffdcfbffff00000000562a0000782a0000902a0000e82a0000302b0000
+    m_ExpandedIDs: c2b7ffff5ab8ffff8eb9ffff24c8ffffbcc8fffff0c9ffffb2ceffff48cfffff7cd0ffff42d4ffffd6d4ffff0ad6ffff52f4ffffe6f4ffff26f6ffff1af9ffffacf9ffffe0faffffdcfbffff00000000163100007c31000092340000f83400000a38000070380000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -482,7 +482,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scene/InGame/Scripts/Monster
+    - Assets/Scene/InGame/Particle
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders:
@@ -494,7 +494,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 7a260000
     m_LastClickedID: 9850
-    m_ExpandedIDs: 000000000c2600003e2600004e26000062260000762600007c2600009226000096260000cc260000de260000ee260000f6260000fc260000fe260000022700002c2700003a270000522700006227000078270000ca270000de2700009c2900009e290000
+    m_ExpandedIDs: 000000000e26000040260000642600007e2600008026000092260000962600009a260000e6260000042700000a27000034270000422700005a2700006a270000802700009a270000d6270000d8270000ea270000ec270000a4290000a6290000a8290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -522,7 +522,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 481}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000000c2600003e260000622600007c2600007e2600008e2600009226000096260000de260000fc260000022700002c2700003a270000522700006227000078270000ca270000dc270000de2700009c2900009e290000dc2900000c2a000008430000
+    m_ExpandedIDs: 000000000e26000040260000642600007e2600008026000092260000962600009a260000e6260000042700000a27000034270000422700005a2700006a270000802700009a270000d6270000d8270000ea270000ec270000a4290000a6290000a8290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
