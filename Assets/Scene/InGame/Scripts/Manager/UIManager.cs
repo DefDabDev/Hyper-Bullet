@@ -45,15 +45,23 @@ public class UIManager : ALComponentSingleton<UIManager> {
             targetValue = 0f;
         else
             targetValue = currentValue / _maxGauge;
-        while(true)
-        {
-            if (timer >= 1f)
-                break;
 
-            timer += delay;
-            float x = ALLerp.Lerp(_gunGauge.transform.localScale.x, targetValue, timer);
-            SetScaleX(x);
-            yield return null;
+        if (delay <= 0)
+        {
+            SetScaleX(targetValue);
+        }
+        else
+        {
+            while (true)
+            {
+                if (timer >= 1f)
+                    break;
+
+                timer += delay;
+                float x = ALLerp.Lerp(_gunGauge.transform.localScale.x, targetValue, timer);
+                SetScaleX(x);
+                yield return null;
+            }
         }
         _isDecreasing = false;
     }

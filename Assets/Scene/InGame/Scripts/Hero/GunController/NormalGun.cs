@@ -32,7 +32,7 @@ public class NormalGun : GunBehaviour
             yield return new WaitForSeconds(_shootDelay);
         }
 
-        --_realMagazine;
+        //--_realMagazine;
         if (_realMagazine < 0)
         {
             UIManager.instance.Reload(_fireDelay);

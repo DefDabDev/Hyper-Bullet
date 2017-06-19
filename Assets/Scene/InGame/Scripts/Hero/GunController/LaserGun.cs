@@ -37,11 +37,12 @@ public class LaserGun : GunBehaviour
         {
             if (_line.startWidth >= 0.2f)
             {
-                HitCheck();
+                HitCheck(endPoint.normalized);
                 Cartridge c = cg.GetCartridge();
                 c.gameObject.SetActive(true);
                 c.transform.localPosition = transform.parent.localPosition;
                 c.Emission(angle);
+                CameraShaker.instance.Shake();
             }
 
             if (timer >= 1f)
@@ -76,16 +77,21 @@ public class LaserGun : GunBehaviour
         UIManager.instance.Reload(_fireDelay);
     }
 
-    public void HitCheck()
+    public void HitCheck(Vector3 direction)
     {
         RaycastHit2D[] hits = null;
-        float distance = Vector3.Distance(_line.GetPosition(0), _line.GetPosition(1));
-        hits = Physics2D.RaycastAll(_line.GetPosition(0), _line.GetPosition(1), distance);
+        hits = Physics2D.RaycastAll(_line.GetPosition(0), direction);
 
         for (int i = 0; i < hits.Length; ++i)
         {
             if (!hits[i].transform.CompareTag("Player"))
-                hits[i].transform.SendMessage("receiveDMG", (uint)_damage);
+            {
+                hits[i].transform.SendMessage("receiveDMG", Hero.Hero._hero.dmg);
+                ParticleSystem effect = EffectPool.instance.GetEffect();
+                effect.transform.localPosition = hits[i].transform.localPosition;
+                effect.Play();
+                Debug.Log(hits[i].transform.name);
+            }
         }
     }
 }

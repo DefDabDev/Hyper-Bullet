@@ -102,7 +102,7 @@ namespace GM
 
                 // HERO
                 GUI.Box(new Rect(600, 10, 100, 170), "Hero");
-                Hero.Hero._hero.dmg = Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(605, 30, 90, 30), Hero.Hero._hero.dmg, 0, 100));
+                Hero.Hero._hero.dmg = (uint)Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(605, 30, 90, 30), Hero.Hero._hero.dmg, 0, 100));
                 GUI.Label(new Rect(605, 40, 90, 20), "Dmg : " + Hero.Hero._hero.dmg);
                 Hero.HeroMover._moveSpeed = GUI.HorizontalSlider(new Rect(605, 60, 90, 30), Hero.HeroMover._moveSpeed, 0.1F, 10F);
                 GUI.Label(new Rect(605, 70, 90, 20), "Sp : " + Hero.HeroMover._moveSpeed);

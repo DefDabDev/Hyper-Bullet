@@ -72,7 +72,8 @@ public class ReflectionBullet : BulletBehaviour
             float temp = Vector3.Angle(transform.up, collision.GetComponent<CMonster>().moveVector);
             temp = Mathf.Rad2Deg * temp;
             SetRotation(temp);
-            collision.SendMessage("receiveDMG", (uint)_damage);
+            //collision.SendMessage("receiveDMG", (uint)_damage);
+            collision.SendMessage("receiveDMG", Hero.Hero._hero.dmg);
             --_reflectionCount;
             if (_reflectionCount.Equals(0))
                 gameObject.SetActive(false);
