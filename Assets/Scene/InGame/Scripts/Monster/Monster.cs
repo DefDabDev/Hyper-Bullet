@@ -104,7 +104,7 @@ namespace Monster
         /// </summary>
         public static void Variation()
         {
-            moveVariation = (moveVariation == 1 ? 0.03f : 1);
+            moveVariation = (moveVariation == 1 ? 0.05f : 1);
         }
 
         //void OnTriggerEnter2D(Collider2D other)
