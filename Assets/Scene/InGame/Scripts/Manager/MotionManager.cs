@@ -16,6 +16,9 @@ namespace GM
         [SerializeField]
         GameObject[] selectWeaponObj;
 
+        [SerializeField]
+        HeroAttack hAttack;
+
         // 줌 In/Out 방식
         //void Update()
         //{
@@ -72,10 +75,8 @@ namespace GM
         {
             hAttack._currentGun = idx;
             checkWeapon();
+            hAttack.ChangeWeapon(idx);
         }
-
-        [SerializeField]
-        HeroAttack hAttack;
 
         public void checkWeapon()
         {

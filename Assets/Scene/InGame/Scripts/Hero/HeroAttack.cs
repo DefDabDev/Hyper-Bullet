@@ -11,6 +11,9 @@ public class HeroAttack : MonoBehaviour
     [SerializeField]
     private GunBehaviour[] _guns;
 
+    [SerializeField]
+    private Color[] _gunColor;
+
     private Vector2 _rotateVector;
     private const float correction = 90f * Mathf.Deg2Rad;
 
@@ -39,5 +42,6 @@ public class HeroAttack : MonoBehaviour
         _currentGun = index;
         _guns[_currentGun].StopAllCoroutines();
         _guns[_currentGun].ChangeGun();
+        BGChange.instance.ChangeBG(_gunColor[index]);
     }
 }
