@@ -49,5 +49,7 @@ public class NormalGun : GunBehaviour
     {
         UIManager.instance.ChangeUI("NormalGun", _magazineSize);
         image.sprite = _playerImage;
+        _realMagazine = _magazineSize;
+        UIManager.instance.Reload(_fireDelay);
     }
 }

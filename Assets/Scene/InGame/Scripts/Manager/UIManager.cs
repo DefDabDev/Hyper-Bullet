@@ -65,7 +65,8 @@ public class UIManager : ALComponentSingleton<UIManager> {
 
     public void Reload(float reloadTime)
     {
-        StopCoroutine(_stop); 
+        if (_stop != null)
+            StopCoroutine(_stop); 
         StartCoroutine("ReloadAnimation", reloadTime);
     }
 

@@ -49,5 +49,7 @@ public class ReflectionGun : GunBehaviour
     {
         UIManager.instance.ChangeUI("ReflectionGun", _magazineSize);
         image.sprite = _playerImage;
+        _realMagazine = _magazineSize;
+        UIManager.instance.Reload(_fireDelay);
     }
 }

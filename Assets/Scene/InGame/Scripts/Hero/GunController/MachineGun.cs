@@ -47,5 +47,7 @@ public class MachineGun : GunBehaviour {
     {
         UIManager.instance.ChangeUI("MachineGun", _magazineSize);
         image.sprite = _playerImage;
+        _realMagazine = _magazineSize;
+        UIManager.instance.Reload(_fireDelay);
     }
 }

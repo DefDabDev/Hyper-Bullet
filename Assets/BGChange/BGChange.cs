@@ -35,7 +35,6 @@ public class BGChange : ALComponentSingleton<BGChange> {
 
             timer += Time.deltaTime;
             _bg.transform.localScale = ALLerp.Lerp(_bg.transform.localScale, Vector3.one, timer);
-            Debug.Log(timer);
             yield return null;
         }
         _camera.backgroundColor = _bg.color;

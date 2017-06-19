@@ -76,6 +76,7 @@ namespace GM
             hAttack._currentGun = idx;
             checkWeapon();
             hAttack.ChangeWeapon(idx);
+            checkSelectBulletUI();
         }
 
         public void checkWeapon()

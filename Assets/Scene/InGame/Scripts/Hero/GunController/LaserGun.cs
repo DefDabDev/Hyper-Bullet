@@ -72,6 +72,8 @@ public class LaserGun : GunBehaviour
     {
         UIManager.instance.ChangeUI("LaserGun", _magazineSize);
         image.sprite = _playerImage;
+        _realMagazine = _magazineSize;
+        UIManager.instance.Reload(_fireDelay);
     }
 
     public void HitCheck()
