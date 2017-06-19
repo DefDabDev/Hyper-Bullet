@@ -13,6 +13,9 @@ namespace GM
         float curDist = 0;
         float rateChange = 0;
 
+        [SerializeField]
+        GameObject[] selectWeaponObj;
+
         // 줌 In/Out 방식
         //void Update()
         //{
@@ -62,6 +65,26 @@ namespace GM
                 {
                     Monster.CMonster.Variation();
                 }
+            }
+        }
+
+        public void selectWeapon(int idx)
+        {
+            hAttack._currentGun = idx;
+            checkWeapon();
+        }
+
+        [SerializeField]
+        HeroAttack hAttack;
+
+        public void checkWeapon()
+        {
+            for (int i = 0; i < 5; i ++)
+            {
+                if (hAttack._currentGun.Equals(i))
+                    selectWeaponObj[i].SetActive(true);
+                else
+                    selectWeaponObj[i].SetActive(false);
             }
         }
     }

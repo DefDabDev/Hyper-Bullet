@@ -6,8 +6,8 @@ using UnityEngine;
 public class HeroAttack : MonoBehaviour
 {
     [SerializeField]
-    private int _currentGun = 0;
-
+    public /*private*/ int _currentGun = 0;
+    
     [SerializeField]
     private GunBehaviour[] _guns;
 
