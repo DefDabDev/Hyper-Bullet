@@ -89,8 +89,12 @@ public class ReflectionBullet : BulletBehaviour
 
         //if (collision.CompareTag("Edge"))
         //{
-        //    RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
-        //    Vector3 inVector = (Vector3)hit.normal - _firePoint;
+        //    RaycastHit2D hit;
+        //    if (_vecotrMove)
+        //        hit = Physics2D.Raycast(transform.position, _moveVector);
+        //    else
+        //        hit = Physics2D.Raycast(transform.position, transform.up);
+        //    Vector3 inVector = (Vector3)hit.point - _firePoint;
         //    Vector3 outVecor = _firePoint - (Vector3)hit.point;
         //    Vector3 normalVector = hit.normal;
         //    //float temp = Mathf.Atan2(outVecor.y, outVecor.x) * Mathf.Rad2Deg;
