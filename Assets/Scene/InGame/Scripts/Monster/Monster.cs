@@ -18,7 +18,7 @@ namespace Monster
         [SerializeField]
         protected uint mHP = 0;         // hp
         public uint hp { get { return mHP; } }
-        
+
         public static float mSpeed_Rect = 2;
         public static float mSpeed_Penta = 2;
         public static float mSpeed_Hexa = 2;
@@ -63,7 +63,7 @@ namespace Monster
 
                 if (this.transform.childCount > 0)
                 {
-                    for (int i = this.transform.childCount -1; i >= 0; i--)
+                    for (int i = this.transform.childCount - 1; i >= 0; i--)
                     {
                         this.transform.GetChild(i).SendMessage("free");
                     }
