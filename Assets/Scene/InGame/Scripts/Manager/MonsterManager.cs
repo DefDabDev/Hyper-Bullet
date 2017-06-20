@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,9 +29,9 @@ namespace GM
         static GameObject monsterPrefab_HB; // M Hexa Baby
         public static Transform monsterParent;
 
-        public List<CMonster> v_RectMonster     = new List<CMonster>();
-        public List<CMonster> v_PentaMonster    = new List<CMonster>();
-        public List<CMonster> v_HexaMonster     = new List<CMonster>();
+        public List<CMonster> v_RectMonster = new List<CMonster>();
+        public List<CMonster> v_PentaMonster = new List<CMonster>();
+        public List<CMonster> v_HexaMonster = new List<CMonster>();
         public List<CMonster> v_RectBabyMonster = new List<CMonster>();
         public List<CMonster> v_PentaBabyMonster = new List<CMonster>();
         public List<CMonster> v_HexaBabyMonster = new List<CMonster>();
@@ -127,11 +127,11 @@ namespace GM
             switch (em)
             {
                 case EMonster.MRECT:
-                //case EMonster.MRECTRECT:
+                    //case EMonster.MRECTRECT:
                     obj = Instantiate(monsterPrefab_R) as GameObject;
                     break;
                 case EMonster.MPENTA:
-                //case EMonster.MTURTLE:
+                    //case EMonster.MTURTLE:
                     obj = Instantiate(monsterPrefab_P) as GameObject;
                     break;
                 case EMonster.MHEXA:
@@ -157,7 +157,7 @@ namespace GM
         }
         [System.Obsolete("그냥 몬스터 생성만해서 테스트하기 위함, 테스트용이 아니라면 사용하지 마시오.", true)]
         public static GameObject createMonster(EMonster em, Vector2 pos, Vector2 sca)
-        {            
+        {
             GameObject obj = createMonster(em);
             obj.transform.localPosition = pos;
             obj.transform.localScale = sca;
@@ -171,24 +171,34 @@ namespace GM
             {
                 case 0:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1400, -1280),
-                        Hero.Hero._hero.transform.localPosition.y + Random.Range(720, 900));
+                        Hero.Hero._hero.transform.localPosition.x - 1280,
+                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-720, 720));
                     break;
                 case 1:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1400, -1280),
-                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-900, -720));
+                        Hero.Hero._hero.transform.localPosition.x + 1280,
+                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-720, 720));
                     break;
                 case 2:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + Random.Range(1280, 1400),
-                        Hero.Hero._hero.transform.localPosition.y + Random.Range(720, 900));
+                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1280, 1280),
+                        Hero.Hero._hero.transform.localPosition.y - 720);
                     break;
                 case 3:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + Random.Range(1280, 1400),
-                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-900, -720));
+                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1280, 1280),
+                        Hero.Hero._hero.transform.localPosition.y + 720);
                     break;
+            }
+        }
+
+
+        IEnumerator MonsterPatternMNG()
+        {
+            while (true)
+            {
+
+                yield return null;
             }
         }
     }
