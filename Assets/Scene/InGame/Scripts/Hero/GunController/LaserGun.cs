@@ -80,11 +80,11 @@ public class LaserGun : GunBehaviour
     public void HitCheck(Vector3 direction)
     {
         RaycastHit2D[] hits = null;
-        hits = Physics2D.RaycastAll(_line.GetPosition(0), direction);
+        hits = Physics2D.RaycastAll(transform.parent.position, direction);
 
         for (int i = 0; i < hits.Length; ++i)
         {
-            if (!hits[i].transform.CompareTag("Player"))
+            if (!hits[i].transform.CompareTag("Player") && !hits[i].transform.CompareTag("Edge"))
             {
                 hits[i].transform.SendMessage("receiveDMG", Hero.Hero._hero.dmg);
                 ParticleSystem effect = EffectPool.instance.GetEffect();

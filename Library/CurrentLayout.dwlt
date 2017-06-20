@@ -188,7 +188,7 @@ MonoBehaviour:
   m_MinSize: {x: 817, y: 471}
   m_MaxSize: {x: 22012, y: 14021}
   vertical: 0
-  controlID: 144
+  controlID: 9
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_MinSize: {x: 306, y: 442}
   m_MaxSize: {x: 8006, y: 8042}
   vertical: 1
-  controlID: 80
+  controlID: 10
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -387,9 +387,9 @@ MonoBehaviour:
     height: 441
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 34290000
-    m_LastClickedID: 10548
-    m_ExpandedIDs: dcfbffff0000000034290000e2290000
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: 86d2ffff3ad3ffff6cd4ffffdcfbffff000000003429000060290000e2290000f0290000882a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -482,7 +482,7 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Resources/Bullet
+    - Assets/Scene/InGame/Scripts/Hero/GunController
   m_ViewMode: 0
   m_StartGridSize: 64
   m_LastFolders:
@@ -519,7 +519,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 230}
+    scrollPos: {x: 0, y: 654.00085}
     m_SelectedIDs: 
     m_LastClickedID: 0
     m_ExpandedIDs: 0000000012260000442600005426000072260000882600008e26000090260000a2260000a6260000aa260000b8260000f82600000a270000322700003427000062270000722700008e270000b4270000d62700001e280000202800003428000036280000ea2a0000ec2a0000ee2a0000
