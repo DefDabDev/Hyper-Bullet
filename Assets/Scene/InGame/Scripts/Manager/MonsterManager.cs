@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,9 +29,9 @@ namespace GM
         static GameObject monsterPrefab_HB; // M Hexa Baby
         public static Transform monsterParent;
 
-        public List<CMonster> v_RectMonster     = new List<CMonster>();
-        public List<CMonster> v_PentaMonster    = new List<CMonster>();
-        public List<CMonster> v_HexaMonster     = new List<CMonster>();
+        public List<CMonster> v_RectMonster = new List<CMonster>();
+        public List<CMonster> v_PentaMonster = new List<CMonster>();
+        public List<CMonster> v_HexaMonster = new List<CMonster>();
         public List<CMonster> v_RectBabyMonster = new List<CMonster>();
         public List<CMonster> v_PentaBabyMonster = new List<CMonster>();
         public List<CMonster> v_HexaBabyMonster = new List<CMonster>();
@@ -54,6 +54,8 @@ namespace GM
             monsterPrefab_PB = Resources.Load("Monster/MPentaBaby") as GameObject;
             monsterPrefab_PB = Resources.Load("Monster/MHexaBaby") as GameObject;
             monsterParent = this.transform;
+
+            monsterPattern();
         }
 
         void Start()
@@ -127,11 +129,11 @@ namespace GM
             switch (em)
             {
                 case EMonster.MRECT:
-                //case EMonster.MRECTRECT:
+                    //case EMonster.MRECTRECT:
                     obj = Instantiate(monsterPrefab_R) as GameObject;
                     break;
                 case EMonster.MPENTA:
-                //case EMonster.MTURTLE:
+                    //case EMonster.MTURTLE:
                     obj = Instantiate(monsterPrefab_P) as GameObject;
                     break;
                 case EMonster.MHEXA:
@@ -157,7 +159,7 @@ namespace GM
         }
         [System.Obsolete("그냥 몬스터 생성만해서 테스트하기 위함, 테스트용이 아니라면 사용하지 마시오.", true)]
         public static GameObject createMonster(EMonster em, Vector2 pos, Vector2 sca)
-        {            
+        {
             GameObject obj = createMonster(em);
             obj.transform.localPosition = pos;
             obj.transform.localScale = sca;
@@ -171,25 +173,92 @@ namespace GM
             {
                 case 0:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1400, -1280),
-                        Hero.Hero._hero.transform.localPosition.y + Random.Range(720, 900));
+                        Hero.Hero._hero.transform.localPosition.x - 1280,
+                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-720, 720));
                     break;
                 case 1:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1400, -1280),
-                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-900, -720));
+                        Hero.Hero._hero.transform.localPosition.x + 1280,
+                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-720, 720));
                     break;
                 case 2:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + Random.Range(1280, 1400),
-                        Hero.Hero._hero.transform.localPosition.y + Random.Range(720, 900));
+                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1280, 1280),
+                        Hero.Hero._hero.transform.localPosition.y - 720);
                     break;
                 case 3:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + Random.Range(1280, 1400),
-                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-900, -720));
+                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1280, 1280),
+                        Hero.Hero._hero.transform.localPosition.y + 720);
                     break;
             }
         }
+
+        #region _MONSTER_PATTERN_
+        void monsterPattern()
+        {
+            StartCoroutine(rectPattern());
+            StartCoroutine(pentaPattern());
+            StartCoroutine(hexaPattern());
+            StartCoroutine(rectrectPattern());
+            StartCoroutine(turtlePattern());
+            StartCoroutine(rectbabyPattern());
+        }
+
+        IEnumerator rectPattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(5);
+                workingMonster(EMonster.MRECT);
+                workingMonster(EMonster.MRECT);
+                workingMonster(EMonster.MRECT);
+            }
+        }
+        IEnumerator pentaPattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(5);
+                workingMonster(EMonster.MPENTA);
+                workingMonster(EMonster.MPENTA);
+            }
+        }
+        IEnumerator hexaPattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(5);
+                workingMonster(EMonster.MHEXA);
+            }
+        }
+        IEnumerator rectrectPattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(10);
+                workingMonster(Monster.EMonster.MRECT, 0).SendMessage("copulation");
+                workingMonster(Monster.EMonster.MRECT, 0).SendMessage("copulation");
+            }
+        }
+        IEnumerator turtlePattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(10);
+                workingMonster(Monster.EMonster.MPENTA, 0).SendMessage("copulation");
+                workingMonster(Monster.EMonster.MPENTA, 0).SendMessage("copulation");
+            }
+        }
+        IEnumerator rectbabyPattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(5);
+                MonsterManager.workingMonster(Monster.EMonster.MRECTBABY);
+            }
+        }
+
+        #endregion
     }
 }
