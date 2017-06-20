@@ -32,6 +32,11 @@ namespace Monster.Object
                 StartCoroutine("update");
                 this.transform.SetParent(GM.MonsterManager.monsterParent);
             }
+            else
+            {
+                StopCoroutine("update");
+                this.transform.SetParent(GM.MonsterManager.monsterParent);
+            }
         }
 
         IEnumerator update()

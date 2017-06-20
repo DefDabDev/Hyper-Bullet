@@ -23,7 +23,7 @@ namespace Monster.Object
 
         void Update()
         {
-            if (Vector2.Distance(Hero.Hero._hero.transform.position, this.transform.position) > 6)
+            if (Vector2.Distance(Hero.Hero._hero.transform.position, this.transform.position) > sitterDist)
             {
                 moveToTarget();
             }
@@ -33,7 +33,7 @@ namespace Monster.Object
         {
             while (true)
             {
-                yield return new WaitForSeconds(3);
+                yield return new WaitForSeconds(spawnCount);
 
                 GM.MonsterManager.workingMonster(EMonster.MPENTA, 0).transform.position = transform.position;
             }

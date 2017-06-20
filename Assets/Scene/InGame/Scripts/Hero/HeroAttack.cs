@@ -17,6 +17,8 @@ public class HeroAttack : MonoBehaviour
     private Vector2 _rotateVector;
     private const float correction = 90f * Mathf.Deg2Rad;
 
+    public uint[] dmges = new uint[5];
+
     private void Start()
     {
         _guns[_currentGun].ChangeGun();

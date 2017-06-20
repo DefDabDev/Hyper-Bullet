@@ -6,6 +6,9 @@ namespace GM
 {
     public class EditorManager : MonoBehaviour
     {
+        [SerializeField]
+        HeroAttack hAttack;
+
         bool onOff = true;
         void Update()
         {
@@ -100,10 +103,22 @@ namespace GM
                 if (GUI.Button(new Rect(15 + maxH, 30 + 50 * idx, 90, 20), "Create"))
                     MonsterManager.workingMonster(Monster.EMonster.MHEXABABY);
 
+                idx = 5;
+
+                GUI.Box(new Rect(10 + maxH, 10 + 50 * idx, 100, 50), "BabyCountTime");
+                Monster.CMonster.spawnCount = GUI.HorizontalSlider(new Rect(15 + maxH, 30 + 50 * idx, 90, 30), Monster.CMonster.spawnCount, 0, 10);
+                GUI.Label(new Rect(15 + maxH, 40 + 50 * idx, 90, 20), "Sc : " + Monster.CMonster.spawnCount);
+
+                idx = 0;
+
+                GUI.Box(new Rect(10 + maxH * 2, 10 + 50 * idx, 100, 50), "Sitter Dist");
+                Monster.CMonster.sitterDist = GUI.HorizontalSlider(new Rect(15 + maxH * 2, 30 + 50 * idx, 90, 30), Monster.CMonster.sitterDist, 0, 10);
+                GUI.Label(new Rect(15 + maxH * 2, 40 + 50 * idx, 90, 20), "d : " + Monster.CMonster.sitterDist);
+
                 // HERO
                 GUI.Box(new Rect(600, 10, 100, 170), "Hero");
-                Hero.Hero._hero.dmg = (uint)Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(605, 30, 90, 30), Hero.Hero._hero.dmg, 0, 100));
-                GUI.Label(new Rect(605, 40, 90, 20), "Dmg : " + Hero.Hero._hero.dmg);
+                Hero.Hero._hero.dmg[hAttack._currentGun] = (uint)Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(605, 30, 90, 30), Hero.Hero._hero.dmg[hAttack._currentGun], 0, 100));
+                GUI.Label(new Rect(605, 40, 90, 20), "Dmg : " + Hero.Hero._hero.dmg[hAttack._currentGun]);
                 Hero.HeroMover._moveSpeed = GUI.HorizontalSlider(new Rect(605, 60, 90, 30), Hero.HeroMover._moveSpeed, 0.1F, 10F);
                 GUI.Label(new Rect(605, 70, 90, 20), "Sp : " + Hero.HeroMover._moveSpeed);
                 GunBehaviour._speed = GUI.HorizontalSlider(new Rect(605, 90, 90, 30), GunBehaviour._speed, 100, 500);
