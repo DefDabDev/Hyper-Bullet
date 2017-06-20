@@ -462,7 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86461ff86725f2249b9f5bed2a365fc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 32
+  dmg: 2000000020000000200000002000000020000000
 --- !u!114 &40985910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -487,6 +487,7 @@ MonoBehaviour:
   - {r: 0.42352942, g: 0.74509805, b: 0.27058825, a: 1}
   - {r: 0.46666667, g: 0.46666667, b: 0.46666667, a: 1}
   - {r: 0, g: 0.68235296, b: 0.9372549, a: 1}
+  dmges: 0000000000000000000000000000000000000000
 --- !u!114 &40985911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3790,6 +3791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d57853dea90d7c84491f34254796a08f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hAttack: {fileID: 40985910}
 --- !u!4 &1766133805
 Transform:
   m_ObjectHideFlags: 0

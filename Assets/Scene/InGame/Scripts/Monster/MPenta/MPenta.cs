@@ -6,15 +6,10 @@ namespace Monster.Object
 {
     public class MPenta : CMonster
     {
-        protected bool myself = true;
-        public bool detention { set { myself = value; } }
-
         void Awake()
         {
-            if (myself)
-            {
-                GM.MonsterManager.v_Monster[(int)EMonster.MPENTA].Add(this);
-            }
+            GM.MonsterManager.v_Monster[(int)EMonster.MPENTA].Add(this);
+
         }
 
         void OnEnable()
@@ -23,11 +18,8 @@ namespace Monster.Object
             mSpeed = mSpeed_Penta;
             mHP = (uint)mHp_Penta;
 
-            if (myself)
-            {
-                StopCoroutine("update");
-                StartCoroutine("update");
-            }
+            StopCoroutine("update");
+            StartCoroutine("update");
         }
 
         /// <summary>
@@ -37,9 +29,13 @@ namespace Monster.Object
         {
             if (gameObject.activeSelf)
             {
-                myself = true;
                 StopCoroutine("update");
                 StartCoroutine("update");
+                this.transform.SetParent(GM.MonsterManager.monsterParent);
+            }
+            else
+            {
+                StopCoroutine("update");
                 this.transform.SetParent(GM.MonsterManager.monsterParent);
             }
         }
@@ -74,7 +70,7 @@ namespace Monster.Object
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);
             obj.transform.localPosition = transform.localPosition + new Vector3(145, 65);
-            obj.transform.localScale = new Vector3(0.9f,0.9f);
+            obj.transform.localScale = new Vector3(0.9f, 0.9f);
             obj.transform.SetParent(this.transform);
             obj.SendMessage("fetter");
             obj = GM.MonsterManager.workingMonster(EMonster.MPENTA, 0);

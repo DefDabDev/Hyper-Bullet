@@ -8,7 +8,8 @@ namespace Hero
     {
         public static Hero _hero = null;
 
-        public uint dmg = 32;
+        //[HideInInspector]
+        public uint[] dmg = new uint[5] { 32, 32, 32, 32, 32 };
         
 
         void Awake()

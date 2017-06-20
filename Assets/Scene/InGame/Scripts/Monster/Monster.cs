@@ -30,6 +30,9 @@ namespace Monster
         public bool alone = false;
         public Vector3 moveVector = Vector3.zero;
 
+        public static float spawnCount = 3;
+        public static float sitterDist = 6;
+
         void OnEnable()
         {
             GM.MonsterManager.monsterSetPostion(this.gameObject);
@@ -52,9 +55,15 @@ namespace Monster
         {
             if (mHP <= amount)
             {
+                if (!alone)
+                {
+                    this.transform.SetParent(GM.MonsterManager.monsterParent);
+                    alone = true;
+                }
+
                 if (this.transform.childCount > 0)
                 {
-                    for (int i = 0; i < this.transform.childCount; i++)
+                    for (int i = this.transform.childCount -1; i >= 0; i--)
                     {
                         this.transform.GetChild(i).SendMessage("free");
                     }
