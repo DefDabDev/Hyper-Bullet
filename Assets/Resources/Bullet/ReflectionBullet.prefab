@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 222550186863435004}
   - component: {fileID: 114818337641594842}
   - component: {fileID: 50287247076427948}
-  - component: {fileID: 61255206135977072}
   - component: {fileID: 114128691409619418}
-  m_Layer: 0
+  - component: {fileID: 58775197818957418}
+  m_Layer: 12
   m_Name: ReflectionBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -51,8 +51,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61255206135977072
-BoxCollider2D:
+--- !u!58 &58775197818957418
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -60,22 +60,12 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18, y: 18}
-  m_EdgeRadius: 0
+  m_Radius: 9
 --- !u!114 &114128691409619418
 MonoBehaviour:
   m_ObjectHideFlags: 1

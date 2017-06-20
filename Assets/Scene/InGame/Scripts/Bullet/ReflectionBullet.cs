@@ -27,6 +27,10 @@ public class ReflectionBullet : BulletBehaviour
     public float speed { get { return _speed; } }
 
     private int _reflectionCount = 0;
+    private const float correction = 90f * Mathf.Deg2Rad;
+    private Vector3 _firePoint;
+    private Vector3 _moveVector;
+    bool _vecotrMove = false;
 
     public override void Shoot(Transform ownerTransfrom, OWNER owner, BULLET_EFFECT effect)
     {
@@ -35,6 +39,8 @@ public class ReflectionBullet : BulletBehaviour
         transform.position = ownerTransfrom.position;
         _bulletEffect = effect;
         _owner = owner;
+        _firePoint = ownerTransfrom.position;
+        _vecotrMove = false;
     }
 
     public override void Shoot(Transform ownerTransfrom, OWNER owner, BULLET_EFFECT effect, float speed, int damage)
@@ -46,6 +52,8 @@ public class ReflectionBullet : BulletBehaviour
         _owner = owner;
         _speed = speed;
         _damage = damage;
+        _firePoint = ownerTransfrom.position;
+        _vecotrMove = false;
     }
 
     private void OnDisable()
@@ -75,13 +83,34 @@ public class ReflectionBullet : BulletBehaviour
             //collision.SendMessage("receiveDMG", (uint)_damage);
             collision.SendMessage("receiveDMG", Hero.Hero._hero.dmg);
             --_reflectionCount;
-            if (_reflectionCount.Equals(0))
+            if (_reflectionCount <= 0)
                 gameObject.SetActive(false);
         }
+
+        //if (collision.CompareTag("Edge"))
+        //{
+        //    RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
+        //    Vector3 inVector = (Vector3)hit.normal - _firePoint;
+        //    Vector3 outVecor = _firePoint - (Vector3)hit.point;
+        //    Vector3 normalVector = hit.normal;
+        //    //float temp = Mathf.Atan2(outVecor.y, outVecor.x) * Mathf.Rad2Deg;
+        //    _moveVector = Vector3.Reflect(inVector, normalVector);
+        //    _moveVector = _moveVector.normalized;
+        //    _vecotrMove = true;
+        //    //float temp = Vector3.Angle(transform.up, collision.transform.up);
+        //    //temp = Mathf.Rad2Deg * temp;
+        //    //SetRotation(temp);
+        //    --_reflectionCount;
+        //    if (_reflectionCount <= 0)
+        //        gameObject.SetActive(false);
+        //}
     }
 
     private void Movement()
     {
-        rigid2D.velocity = transform.up * _speed * Time.smoothDeltaTime;
+        if (_vecotrMove)
+            rigid2D.velocity = _moveVector * _speed * Time.smoothDeltaTime;
+        else
+            rigid2D.velocity = transform.up * _speed * Time.smoothDeltaTime;
     }
 }

@@ -7,6 +7,7 @@ TagManager:
   - Monster
   - Bullet
   - MNG
+  - Edge
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Hero
   - Monster
   - Bullet
-  - 
-  - 
+  - Edge
+  - ReflectionBullet
   - 
   - 
   - 
