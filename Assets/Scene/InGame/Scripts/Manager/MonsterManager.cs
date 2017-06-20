@@ -38,6 +38,8 @@ namespace GM
         public static List<List<CMonster>> v_Monster = new List<List<CMonster>>();
         #endregion
 
+        public static bool canSpawn = true;
+
         void Awake()
         {
             v_Monster.Add(v_RectMonster);
@@ -167,97 +169,277 @@ namespace GM
             return obj;
         }
 
+        /// <summary>
+        /// 몬스터 시작 포지션 정해주기
+        /// </summary>
+        /// <param name="obj">몬스터 대상</param>
         public static void monsterSetPostion(GameObject obj)
         {
             switch (Random.Range(0, 4))
             {
                 case 0:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x - 1280,
-                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-720, 720));
+                        -1560,
+                        +Random.Range(-1000, 1000));
                     break;
                 case 1:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + 1280,
-                        Hero.Hero._hero.transform.localPosition.y + Random.Range(-720, 720));
+                        +1560,
+                        +Random.Range(-1000, 1000));
                     break;
                 case 2:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1280, 1280),
-                        Hero.Hero._hero.transform.localPosition.y - 720);
+                        +Random.Range(-1560, 1560),
+                        -1000);
                     break;
                 case 3:
                     obj.transform.localPosition = new Vector3(
-                        Hero.Hero._hero.transform.localPosition.x + Random.Range(-1280, 1280),
-                        Hero.Hero._hero.transform.localPosition.y + 720);
+                        +Random.Range(-1560, 1560),
+                        +1000);
                     break;
             }
+        }
+
+        public int monsterCount()
+        {
+            int count = 0;
+            for (int j = 0; j < v_Monster.Count; j++)
+                for (int i = 0; i < v_Monster[j].Count; i++)
+                    if (v_Monster[j][i].gameObject.activeSelf)
+                        count++;
+            return count;
+
         }
 
         #region _MONSTER_PATTERN_
         void monsterPattern()
         {
-            StartCoroutine(rectPattern());
-            StartCoroutine(pentaPattern());
-            StartCoroutine(hexaPattern());
-            StartCoroutine(rectrectPattern());
-            StartCoroutine(turtlePattern());
-            StartCoroutine(rectbabyPattern());
+            //StartCoroutine(rectPattern());
+            //StartCoroutine(pentaPattern());
+            //StartCoroutine(hexaPattern());
+            //StartCoroutine(rectrectPattern());
+            //StartCoroutine(turtlePattern());
+            //StartCoroutine(rectsitterPattern());
+            //StartCoroutine(pentasitterPattern());
+            //StartCoroutine(hexasitterPattern());
+
+            StartCoroutine(originPattern());
+            StartCoroutine(originoriginPattern());
+            StartCoroutine(originsitterPattern());
         }
 
+        #region _PATTERN_0_
         IEnumerator rectPattern()
         {
             while (true)
             {
-                yield return new WaitForSeconds(5);
+                float spawn_0 = Random.Range(0, 5);
+                yield return new WaitForSeconds(spawn_0);
                 workingMonster(EMonster.MRECT);
+
+                float spawn_1 = Random.Range(0, 5 - spawn_0);
+                yield return new WaitForSeconds(spawn_1);
                 workingMonster(EMonster.MRECT);
+
+                float spawn_2 = Random.Range(0, 5 - spawn_0 - spawn_1);
+                yield return new WaitForSeconds(spawn_2);
                 workingMonster(EMonster.MRECT);
+
+                yield return new WaitForSeconds(5 - spawn_0 - spawn_1 - spawn_2);
             }
         }
         IEnumerator pentaPattern()
         {
             while (true)
             {
-                yield return new WaitForSeconds(5);
+                float spawn_0 = Random.Range(0, 5);
+                yield return new WaitForSeconds(spawn_0);
                 workingMonster(EMonster.MPENTA);
+
+                float spawn_1 = Random.Range(0, 5 - spawn_0);
+                yield return new WaitForSeconds(spawn_1);
                 workingMonster(EMonster.MPENTA);
+
+                yield return new WaitForSeconds(5 - spawn_0 - spawn_1);
             }
         }
         IEnumerator hexaPattern()
         {
             while (true)
             {
-                yield return new WaitForSeconds(5);
+                float spawn_0 = Random.Range(0, 5);
+                yield return new WaitForSeconds(spawn_0);
                 workingMonster(EMonster.MHEXA);
+
+                yield return new WaitForSeconds(5 - spawn_0);
             }
         }
         IEnumerator rectrectPattern()
         {
             while (true)
             {
-                yield return new WaitForSeconds(10);
+                float spawn_0 = Random.Range(0, 10);
+                yield return new WaitForSeconds(spawn_0);
                 workingMonster(Monster.EMonster.MRECT, 0).SendMessage("copulation");
+
+                float spawn_1 = Random.Range(0, 10 - spawn_0);
+                yield return new WaitForSeconds(spawn_1);
                 workingMonster(Monster.EMonster.MRECT, 0).SendMessage("copulation");
+
+                yield return new WaitForSeconds(10 - spawn_0 - spawn_1);
             }
         }
         IEnumerator turtlePattern()
         {
             while (true)
             {
-                yield return new WaitForSeconds(10);
+                float spawn_0 = Random.Range(0, 10);
+                yield return new WaitForSeconds(spawn_0);
                 workingMonster(Monster.EMonster.MPENTA, 0).SendMessage("copulation");
+
+                float spawn_1 = Random.Range(0, 10 - spawn_0);
+                yield return new WaitForSeconds(spawn_1);
                 workingMonster(Monster.EMonster.MPENTA, 0).SendMessage("copulation");
+
+                yield return new WaitForSeconds(10 - spawn_0 - spawn_1);
             }
         }
-        IEnumerator rectbabyPattern()
+        IEnumerator rectsitterPattern()
         {
             while (true)
             {
-                yield return new WaitForSeconds(5);
-                MonsterManager.workingMonster(Monster.EMonster.MRECTBABY);
+                float spawn_0 = Random.Range(0, 10);
+                yield return new WaitForSeconds(spawn_0);
+                workingMonster(Monster.EMonster.MRECTBABY);
+
+                float spawn_1 = Random.Range(0, 10 - spawn_0);
+                yield return new WaitForSeconds(spawn_1);
+                workingMonster(Monster.EMonster.MRECTBABY);
+
+                yield return new WaitForSeconds(10 - spawn_0 - spawn_1);
             }
         }
+        IEnumerator pentasitterPattern()
+        {
+            while (true)
+            {
+                float spawn_0 = Random.Range(0, 10);
+                yield return new WaitForSeconds(spawn_0);
+                workingMonster(Monster.EMonster.MPENTABABY);
+
+                float spawn_1 = Random.Range(0, 10 - spawn_0);
+                yield return new WaitForSeconds(spawn_1);
+                workingMonster(Monster.EMonster.MPENTABABY);
+
+                yield return new WaitForSeconds(10 - spawn_0 - spawn_1);
+            }
+        }
+        IEnumerator hexasitterPattern()
+        {
+            while (true)
+            {
+                float spawn_0 = Random.Range(0, 10);
+                yield return new WaitForSeconds(spawn_0);
+                workingMonster(Monster.EMonster.MHEXABABY);
+
+                float spawn_1 = Random.Range(0, 10 - spawn_0);
+                yield return new WaitForSeconds(spawn_1);
+                workingMonster(Monster.EMonster.MHEXABABY);
+
+                yield return new WaitForSeconds(10 - spawn_0 - spawn_1);
+            }
+        }
+        #endregion
+
+        #region _PATTERN_1
+        IEnumerator originPattern()
+        {
+            while (true)
+            {
+                float spawn_0 = Random.Range(0, 10);
+                yield return new WaitForSeconds(spawn_0);
+                workRamdom(0, 3);
+
+                float spawn_1 = Random.Range(0, 10 - spawn_0);
+                yield return new WaitForSeconds(spawn_1);
+                workRamdom(0, 3);
+
+                float spawn_2 = Random.Range(0, 10 - spawn_0 - spawn_1);
+                yield return new WaitForSeconds(spawn_2);
+                workRamdom(0, 3);
+
+                yield return new WaitForSeconds(10 - spawn_0 - spawn_1 - spawn_2);
+            }
+        }
+        IEnumerator originoriginPattern()
+        {
+            while (true)
+            {
+                float spawn_0 = Random.Range(0, 15);
+                yield return new WaitForSeconds(spawn_0);
+                workRamdom(3, 5);
+
+                float spawn_1 = Random.Range(0, 15 - spawn_0);
+                yield return new WaitForSeconds(spawn_1);
+                workRamdom(3, 5);
+
+                yield return new WaitForSeconds(15 - spawn_0 - spawn_1);
+            }
+        }
+        IEnumerator originsitterPattern()
+        {
+            while (true)
+            {
+                float spawn_0 = Random.Range(0, 15);
+                yield return new WaitForSeconds(spawn_0);
+                workRamdom(5, 8);
+
+                float spawn_1 = Random.Range(0, 15 - spawn_0);
+                yield return new WaitForSeconds(spawn_1);
+                workRamdom(5, 8);
+
+                yield return new WaitForSeconds(15 - spawn_0 - spawn_1);
+            }
+        }
+
+        public void workRamdom(int s, int e)
+        {
+            if (!canSpawn) return;
+            if (monsterCount() >= 10) return;
+
+            switch (Random.Range(s, e))
+            {
+                case 0:
+                    workingMonster(EMonster.MRECT);
+                    break;
+                case 1:
+                    workingMonster(EMonster.MPENTA);
+                    break;
+                case 2:
+                    workingMonster(EMonster.MHEXA);
+                    break;
+                case 3:
+                    workingMonster(Monster.EMonster.MRECT, 0).SendMessage("copulation");
+                    break;
+                case 4:
+                    workingMonster(Monster.EMonster.MPENTA, 0).SendMessage("copulation");
+                    break;
+                case 5:
+                    workingMonster(Monster.EMonster.MRECTBABY);
+                    break;
+                case 6:
+                    workingMonster(Monster.EMonster.MPENTABABY);
+                    break;
+                case 7:
+                    workingMonster(Monster.EMonster.MHEXABABY);
+                    break;
+                default:
+                    Debug.LogError("Monster Worm Random Error : s 또는 e 를 확인");
+                    break;
+            }
+        }
+
+        #endregion
 
         #endregion
     }

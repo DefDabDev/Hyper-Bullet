@@ -11,7 +11,7 @@ namespace Hero
         //[HideInInspector]
         public uint[] dmg = new uint[5] { 32, 32, 32, 32, 32 };
 
-        private HeroAttack _attack;
+        public HeroAttack _attack;
 
         void Awake()
         {

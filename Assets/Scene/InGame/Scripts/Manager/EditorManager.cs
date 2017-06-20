@@ -35,6 +35,10 @@ namespace GM
             {
                 onOff = onOff ? false : true;
             }
+            else if (Input.GetKeyDown(KeyCode.Y))
+            {
+                MonsterManager.canSpawn = MonsterManager.canSpawn ? false : true;
+            }
         }
 
         void OnGUI()
@@ -116,17 +120,17 @@ namespace GM
                 GUI.Label(new Rect(15 + maxH * 2, 40 + 50 * idx, 90, 20), "d : " + Monster.CMonster.sitterDist);
 
                 // HERO
-                GUI.Box(new Rect(600, 10, 100, 170), "Hero");
-                Hero.Hero._hero.dmg[hAttack._currentGun] = (uint)Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(605, 30, 90, 30), Hero.Hero._hero.dmg[hAttack._currentGun], 0, 100));
-                GUI.Label(new Rect(605, 40, 90, 20), "Dmg : " + Hero.Hero._hero.dmg[hAttack._currentGun]);
-                Hero.HeroMover._moveSpeed = GUI.HorizontalSlider(new Rect(605, 60, 90, 30), Hero.HeroMover._moveSpeed, 0.1F, 10F);
-                GUI.Label(new Rect(605, 70, 90, 20), "Sp : " + Hero.HeroMover._moveSpeed);
-                GunBehaviour._speed = GUI.HorizontalSlider(new Rect(605, 90, 90, 30), GunBehaviour._speed, 100, 500);
-                GUI.Label(new Rect(605, 100, 130, 20), "GSp : " + GunBehaviour._speed);
-                GunBehaviour._fireDelay = GUI.HorizontalSlider(new Rect(605, 120, 90, 30), GunBehaviour._fireDelay, 0, 0.5F);
-                GUI.Label(new Rect(605, 130, 90, 20), "FD : " + GunBehaviour._fireDelay);
-                GunBehaviour._shootDelay = GUI.HorizontalSlider(new Rect(605, 150, 90, 30), GunBehaviour._shootDelay, 0, 0.5F);
-                GUI.Label(new Rect(605, 160, 90, 20), "SD : " + GunBehaviour._shootDelay);
+                //GUI.Box(new Rect(600, 10, 100, 170), "Hero");
+                //Hero.Hero._hero.dmg[hAttack._currentGun] = (uint)Mathf.RoundToInt(GUI.HorizontalSlider(new Rect(605, 30, 90, 30), Hero.Hero._hero.dmg[hAttack._currentGun], 0, 100));
+                //GUI.Label(new Rect(605, 40, 90, 20), "Dmg : " + Hero.Hero._hero.dmg[hAttack._currentGun]);
+                //Hero.HeroMover._moveSpeed = GUI.HorizontalSlider(new Rect(605, 60, 90, 30), Hero.HeroMover._moveSpeed, 0.1F, 10F);
+                //GUI.Label(new Rect(605, 70, 90, 20), "Sp : " + Hero.HeroMover._moveSpeed);
+                //GunBehaviour._speed = GUI.HorizontalSlider(new Rect(605, 90, 90, 30), GunBehaviour._speed, 100, 500);
+                //GUI.Label(new Rect(605, 100, 130, 20), "GSp : " + GunBehaviour._speed);
+                //GunBehaviour._fireDelay = GUI.HorizontalSlider(new Rect(605, 120, 90, 30), GunBehaviour._fireDelay, 0, 0.5F);
+                //GUI.Label(new Rect(605, 130, 90, 20), "FD : " + GunBehaviour._fireDelay);
+                //GunBehaviour._shootDelay = GUI.HorizontalSlider(new Rect(605, 150, 90, 30), GunBehaviour._shootDelay, 0, 0.5F);
+                //GUI.Label(new Rect(605, 160, 90, 20), "SD : " + GunBehaviour._shootDelay);
             }
         }
     }

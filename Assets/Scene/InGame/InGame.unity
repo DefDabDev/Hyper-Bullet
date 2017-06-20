@@ -242,12 +242,15 @@ MonoBehaviour:
   _state: 0
   _shotPosition: {fileID: 29740678}
   _playerImage: {fileID: 21300000, guid: d46c4698c087d8f4eaa6cdc2f5d0d9c3, type: 3}
-  _damage: 32
+  _damage: 199
+  _speed: 700
   _onceShootBullet: 1
+  _fireDelay: 0.5
+  _shootDelay: 0
   _aceelScale: 0
   _deaceelScale: 0
   _aimAccuracy: 0
-  _magazineSize: 10
+  _magazineSize: 1
   cg: {fileID: 40985911}
 --- !u!1 &36768864
 GameObject:
@@ -463,6 +466,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 2000000020000000200000002000000020000000
+  _attack: {fileID: 0}
 --- !u!114 &40985910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1897,8 +1901,11 @@ MonoBehaviour:
   _state: 0
   _shotPosition: {fileID: 853359792}
   _playerImage: {fileID: 21300000, guid: 4b62875ad01b12b4d8181bb3c2bbe18a, type: 3}
-  _damage: 32
+  _damage: 20
+  _speed: 700
   _onceShootBullet: 1
+  _fireDelay: 0
+  _shootDelay: 0.12
   _aceelScale: 0
   _deaceelScale: 0
   _aimAccuracy: 8
@@ -2286,8 +2293,11 @@ MonoBehaviour:
   _state: 0
   _shotPosition: {fileID: 40985902}
   _playerImage: {fileID: 21300000, guid: 4b62875ad01b12b4d8181bb3c2bbe18a, type: 3}
-  _damage: 32
+  _damage: 5
+  _speed: 700
   _onceShootBullet: 1
+  _fireDelay: 1.5
+  _shootDelay: 0
   _aceelScale: 0
   _deaceelScale: 0
   _aimAccuracy: 15
@@ -3970,8 +3980,11 @@ MonoBehaviour:
   _state: 0
   _shotPosition: {fileID: 40985902}
   _playerImage: {fileID: 21300000, guid: 7e9973c5a37be8e4fb2407e013cb95a1, type: 3}
-  _damage: 32
+  _damage: 30
+  _speed: 700
   _onceShootBullet: 1
+  _fireDelay: 0
+  _shootDelay: 0.1
   _aceelScale: 0
   _deaceelScale: 0
   _aimAccuracy: 10

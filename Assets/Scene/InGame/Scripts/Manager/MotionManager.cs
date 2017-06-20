@@ -62,13 +62,7 @@ namespace GM
         public void checkSelectBulletUI()
         {
             bulletInterface.SetBool("OnOff", bulletInterface.GetBool("OnOff") ? false : true);
-            for (int i = 0; i < MonsterManager.v_Monster.Count; i++)
-            {
-                for (int j = 0; j < MonsterManager.v_Monster[i].Count; j++)
-                {
-                    Monster.CMonster.Variation();
-                }
-            }
+            Monster.CMonster.Variation();
         }
 
         public void selectWeapon(int idx)
@@ -81,7 +75,7 @@ namespace GM
 
         public void checkWeapon()
         {
-            for (int i = 0; i < 5; i ++)
+            for (int i = 0; i < 5; i++)
             {
                 if (hAttack._currentGun.Equals(i))
                     selectWeaponObj[i].SetActive(true);
