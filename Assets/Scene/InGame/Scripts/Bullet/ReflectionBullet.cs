@@ -77,9 +77,21 @@ public class ReflectionBullet : BulletBehaviour
     {
         if (collision.CompareTag("Monster"))
         {
-            float temp = Vector3.Angle(transform.up, collision.GetComponent<CMonster>().moveVector);
-            temp = Mathf.Rad2Deg * temp;
-            SetRotation(temp);
+            //float temp = Vector3.Angle(transform.up, collision.GetComponent<CMonster>().moveVector);
+            //temp = Mathf.Rad2Deg * temp;
+            //SetRotation(temp);
+
+            RaycastHit2D hit;
+            if (_vecotrMove)
+                hit = Physics2D.Raycast(transform.position, _moveVector);
+            else
+                hit = Physics2D.Raycast(transform.position, transform.up);
+            Vector3 inVector = (Vector3)hit.point - _firePoint;
+            Vector3 normalVector = hit.normal;
+            _moveVector = Vector3.Reflect(inVector, normalVector);
+            _moveVector = _moveVector.normalized;
+            _vecotrMove = true;
+
             ParticleSystem particle = EffectPool.instance.GetEffect();
             particle.transform.localPosition = transform.localPosition;
             particle.Play();
@@ -97,7 +109,6 @@ public class ReflectionBullet : BulletBehaviour
             else
                 hit = Physics2D.Raycast(transform.position, transform.up);
             Vector3 inVector = (Vector3)hit.point - _firePoint;
-            Vector3 outVecor = _firePoint - (Vector3)hit.point;
             Vector3 normalVector = hit.normal;
             _moveVector = Vector3.Reflect(inVector, normalVector);
             _moveVector = _moveVector.normalized;

@@ -1768,7 +1768,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: e9ba2083ad114a07d000fbfb8d76c639, type: 3}
-  blurAmount: 0.6
+  blurAmount: 0.3
   extraBlur: 0
 --- !u!114 &808264347
 MonoBehaviour:

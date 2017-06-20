@@ -90,7 +90,6 @@ public class LaserGun : GunBehaviour
                 ParticleSystem effect = EffectPool.instance.GetEffect();
                 effect.transform.position = hits[i].transform.position;
                 effect.Play();
-                Debug.Log(hits[i].transform.name);
             }
         }
     }
