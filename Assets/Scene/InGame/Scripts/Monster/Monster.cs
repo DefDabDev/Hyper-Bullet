@@ -25,13 +25,13 @@ namespace Monster
 
         public static float mHp_Rect = 200;
         public static float mHp_Penta = 250;
-        public static float mHp_Hexa = 220;
+        public static float mHp_Hexa = 300;
 
         public bool alone = false;
         public Vector3 moveVector = Vector3.zero;
 
         public static float spawnCount = 3;
-        public static float sitterDist = 6;
+        public static float sitterDist = 8;
 
         void OnEnable()
         {
