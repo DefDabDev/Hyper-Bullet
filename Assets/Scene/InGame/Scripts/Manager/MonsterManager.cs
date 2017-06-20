@@ -54,6 +54,8 @@ namespace GM
             monsterPrefab_PB = Resources.Load("Monster/MPentaBaby") as GameObject;
             monsterPrefab_PB = Resources.Load("Monster/MHexaBaby") as GameObject;
             monsterParent = this.transform;
+
+            monsterPattern();
         }
 
         void Start()
@@ -192,14 +194,71 @@ namespace GM
             }
         }
 
+        #region _MONSTER_PATTERN_
+        void monsterPattern()
+        {
+            StartCoroutine(rectPattern());
+            StartCoroutine(pentaPattern());
+            StartCoroutine(hexaPattern());
+            StartCoroutine(rectrectPattern());
+            StartCoroutine(turtlePattern());
+            StartCoroutine(rectbabyPattern());
+        }
 
-        IEnumerator MonsterPatternMNG()
+        IEnumerator rectPattern()
         {
             while (true)
             {
-
-                yield return null;
+                yield return new WaitForSeconds(5);
+                workingMonster(EMonster.MRECT);
+                workingMonster(EMonster.MRECT);
+                workingMonster(EMonster.MRECT);
             }
         }
+        IEnumerator pentaPattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(5);
+                workingMonster(EMonster.MPENTA);
+                workingMonster(EMonster.MPENTA);
+            }
+        }
+        IEnumerator hexaPattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(5);
+                workingMonster(EMonster.MHEXA);
+            }
+        }
+        IEnumerator rectrectPattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(10);
+                workingMonster(Monster.EMonster.MRECT, 0).SendMessage("copulation");
+                workingMonster(Monster.EMonster.MRECT, 0).SendMessage("copulation");
+            }
+        }
+        IEnumerator turtlePattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(10);
+                workingMonster(Monster.EMonster.MPENTA, 0).SendMessage("copulation");
+                workingMonster(Monster.EMonster.MPENTA, 0).SendMessage("copulation");
+            }
+        }
+        IEnumerator rectbabyPattern()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(5);
+                MonsterManager.workingMonster(Monster.EMonster.MRECTBABY);
+            }
+        }
+
+        #endregion
     }
 }
