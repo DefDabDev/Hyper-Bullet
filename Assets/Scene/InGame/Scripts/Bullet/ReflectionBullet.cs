@@ -80,34 +80,35 @@ public class ReflectionBullet : BulletBehaviour
             float temp = Vector3.Angle(transform.up, collision.GetComponent<CMonster>().moveVector);
             temp = Mathf.Rad2Deg * temp;
             SetRotation(temp);
-            //collision.SendMessage("receiveDMG", (uint)_damage);
-            collision.SendMessage("receiveDMG", Hero.Hero._hero.dmg);
+            ParticleSystem particle = EffectPool.instance.GetEffect();
+            particle.transform.localPosition = transform.localPosition;
+            particle.Play();
+            collision.SendMessage("receiveDMG", Hero.Hero._hero.GetDmg());
             --_reflectionCount;
             if (_reflectionCount <= 0)
                 gameObject.SetActive(false);
         }
 
-        //if (collision.CompareTag("Edge"))
-        //{
-        //    RaycastHit2D hit;
-        //    if (_vecotrMove)
-        //        hit = Physics2D.Raycast(transform.position, _moveVector);
-        //    else
-        //        hit = Physics2D.Raycast(transform.position, transform.up);
-        //    Vector3 inVector = (Vector3)hit.point - _firePoint;
-        //    Vector3 outVecor = _firePoint - (Vector3)hit.point;
-        //    Vector3 normalVector = hit.normal;
-        //    //float temp = Mathf.Atan2(outVecor.y, outVecor.x) * Mathf.Rad2Deg;
-        //    _moveVector = Vector3.Reflect(inVector, normalVector);
-        //    _moveVector = _moveVector.normalized;
-        //    _vecotrMove = true;
-        //    //float temp = Vector3.Angle(transform.up, collision.transform.up);
-        //    //temp = Mathf.Rad2Deg * temp;
-        //    //SetRotation(temp);
-        //    --_reflectionCount;
-        //    if (_reflectionCount <= 0)
-        //        gameObject.SetActive(false);
-        //}
+        if (collision.CompareTag("Edge"))
+        {
+            RaycastHit2D hit;
+            if (_vecotrMove)
+                hit = Physics2D.Raycast(transform.position, _moveVector);
+            else
+                hit = Physics2D.Raycast(transform.position, transform.up);
+            Vector3 inVector = (Vector3)hit.point - _firePoint;
+            Vector3 outVecor = _firePoint - (Vector3)hit.point;
+            Vector3 normalVector = hit.normal;
+            _moveVector = Vector3.Reflect(inVector, normalVector);
+            _moveVector = _moveVector.normalized;
+            _vecotrMove = true;
+            ParticleSystem particle = EffectPool.instance.GetEffect();
+            particle.transform.localPosition = transform.localPosition;
+            particle.Play();
+            --_reflectionCount;
+            if (_reflectionCount <= 0)
+                gameObject.SetActive(false);
+        }
     }
 
     private void Movement()

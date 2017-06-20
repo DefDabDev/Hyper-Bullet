@@ -86,9 +86,9 @@ public class LaserGun : GunBehaviour
         {
             if (!hits[i].transform.CompareTag("Player") && !hits[i].transform.CompareTag("Edge"))
             {
-                hits[i].transform.SendMessage("receiveDMG", Hero.Hero._hero.dmg);
+                hits[i].transform.SendMessage("receiveDMG", Hero.Hero._hero.GetDmg());
                 ParticleSystem effect = EffectPool.instance.GetEffect();
-                effect.transform.localPosition = hits[i].transform.localPosition;
+                effect.transform.position = hits[i].transform.position;
                 effect.Play();
                 Debug.Log(hits[i].transform.name);
             }

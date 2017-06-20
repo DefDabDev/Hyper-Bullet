@@ -69,7 +69,7 @@ public class Bullet : BulletBehaviour
             effect.transform.position = transform.position;
             effect.Play();
             //collision.SendMessage("receiveDMG", (uint)_damage);
-            collision.SendMessage("receiveDMG", Hero.Hero._hero.dmg);
+            collision.SendMessage("receiveDMG", Hero.Hero._hero.GetDmg());
             gameObject.SetActive(false);
         }
     }

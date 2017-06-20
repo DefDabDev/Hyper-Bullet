@@ -10,11 +10,18 @@ namespace Hero
 
         //[HideInInspector]
         public uint[] dmg = new uint[5] { 32, 32, 32, 32, 32 };
-        
+
+        private HeroAttack _attack;
 
         void Awake()
         {
             _hero = this;
+            _attack = GetComponent<HeroAttack>();
+        }
+
+        public uint GetDmg()
+        {
+            return dmg[_attack._currentGun];
         }
 
         void OnTriggerEnter2D(Collider2D other)
