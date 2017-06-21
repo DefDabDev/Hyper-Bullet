@@ -214,6 +214,8 @@ namespace GM
         #region _MONSTER_PATTERN_
         void monsterPattern()
         {
+            workRamdom(0, 1);
+            workRamdom(0, 1);
             //StartCoroutine(rectPattern());
             //StartCoroutine(pentaPattern());
             //StartCoroutine(hexaPattern());
