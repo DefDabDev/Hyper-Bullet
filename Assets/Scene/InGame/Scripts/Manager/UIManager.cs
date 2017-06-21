@@ -80,15 +80,22 @@ public class UIManager : ALComponentSingleton<UIManager> {
 
     private IEnumerator ReloadAnimation(float reloadTime)
     {
-        float timer = 0f;
-        while (true)
+        if (reloadTime > 0)
         {
-            if (timer >= 1f)
-                break;
+            float timer = 0f;
+            while (true)
+            {
+                if (timer >= 1f)
+                    break;
 
-            timer += 0.1f / reloadTime;
-            _gunGauge.transform.localScale = ALLerp.Lerp(_gunGauge.transform.localScale, Vector3.one, timer);
-            yield return null;
+                timer += 0.1f / reloadTime;
+                _gunGauge.transform.localScale = ALLerp.Lerp(_gunGauge.transform.localScale, Vector3.one, timer);
+                yield return null;
+            }
+        }
+        else
+        {
+            _gunGauge.transform.localScale = Vector3.one;
         }
     }
 }

@@ -95,7 +95,7 @@ public class ReflectionBullet : BulletBehaviour
             ParticleSystem particle = EffectPool.instance.GetEffect();
             particle.transform.localPosition = transform.localPosition;
             particle.Play();
-            collision.SendMessage("receiveDMG", Hero.Hero._hero.GetDmg());
+            collision.SendMessage("receiveDMG", (uint)_damage);
             --_reflectionCount;
             if (_reflectionCount <= 0)
                 gameObject.SetActive(false);
@@ -125,8 +125,8 @@ public class ReflectionBullet : BulletBehaviour
     private void Movement()
     {
         if (_vecotrMove)
-            rigid2D.velocity = _moveVector * _speed * Time.smoothDeltaTime;
+            rigid2D.velocity = _moveVector * _speed * GameTime.deltaTime;
         else
-            rigid2D.velocity = transform.up * _speed * Time.smoothDeltaTime;
+            rigid2D.velocity = transform.up * _speed * GameTime.deltaTime;
     }
 }

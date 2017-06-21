@@ -68,14 +68,13 @@ public class Bullet : BulletBehaviour
             ParticleSystem effect = EffectPool.instance.GetEffect();
             effect.transform.position = transform.position;
             effect.Play();
-            //collision.SendMessage("receiveDMG", (uint)_damage);
-            collision.SendMessage("receiveDMG", Hero.Hero._hero.GetDmg());
+            collision.SendMessage("receiveDMG", (uint)_damage);
             gameObject.SetActive(false);
         }
     }
 
     private void Movement()
     {
-        rigid2D.velocity = transform.up * _speed * Time.smoothDeltaTime;
+        rigid2D.velocity = transform.up * _speed * GameTime.deltaTime;
     }
 }

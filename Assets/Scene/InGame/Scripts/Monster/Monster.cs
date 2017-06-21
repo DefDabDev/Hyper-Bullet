@@ -92,7 +92,7 @@ namespace Monster
         {
             if (!target.Equals(null))
             {
-                moveVector = Vector3.MoveTowards(transform.position, target.position, mSpeed * Time.deltaTime * moveVariation);
+                moveVector = Vector3.MoveTowards(transform.position, target.position, mSpeed * GameTime.deltaTime * moveVariation);
                 transform.position = moveVector;
 
                 if (alone)
@@ -111,10 +111,10 @@ namespace Monster
         /// <summary>
         /// 몬스터 속도 변화 (무기 선택시 사용)
         /// </summary>
-        public static void Variation()
-        {
-            moveVariation = (moveVariation == 1 ? 0.05f : 1);
-        }
+        //public static void Variation()
+        //{
+        //    moveVariation = (moveVariation.Equals(1) ? 0.05f : 1);
+        //}
 
         //void OnTriggerEnter2D(Collider2D other)
         //{

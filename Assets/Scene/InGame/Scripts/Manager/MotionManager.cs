@@ -62,7 +62,8 @@ namespace GM
         public void checkSelectBulletUI()
         {
             bulletInterface.SetBool("OnOff", bulletInterface.GetBool("OnOff") ? false : true);
-            Monster.CMonster.Variation();
+            GameTime.timeScale = (GameTime.timeScale.Equals(1) ? 0.2f : 1f);
+            //Monster.CMonster.Variation();
         }
 
         public void selectWeapon(int idx)

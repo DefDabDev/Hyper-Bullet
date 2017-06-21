@@ -9,7 +9,7 @@ namespace GM
         [SerializeField]
         HeroAttack hAttack;
 
-        bool onOff = true;
+        bool onOff = false;
         void Update()
         {
             if (Input.GetKeyDown(KeyCode.R))

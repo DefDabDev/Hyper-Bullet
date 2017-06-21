@@ -250,7 +250,7 @@ MonoBehaviour:
   _aceelScale: 0
   _deaceelScale: 0
   _aimAccuracy: 0
-  _magazineSize: 1
+  _magazineSize: 2
   cg: {fileID: 40985911}
 --- !u!1 &36768864
 GameObject:
@@ -2296,12 +2296,12 @@ MonoBehaviour:
   _damage: 5
   _speed: 700
   _onceShootBullet: 1
-  _fireDelay: 1.5
+  _fireDelay: 0.15
   _shootDelay: 0
   _aceelScale: 0
   _deaceelScale: 0
   _aimAccuracy: 15
-  _magazineSize: 10
+  _magazineSize: 30
   cg: {fileID: 40985911}
 --- !u!1 &949688168
 GameObject:
