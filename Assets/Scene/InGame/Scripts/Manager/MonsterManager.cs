@@ -42,6 +42,15 @@ namespace GM
 
         void Awake()
         {
+            GameTime.timeScale = 1;
+            v_RectMonster.Clear();
+            v_PentaMonster.Clear();
+            v_HexaMonster.Clear();
+            v_RectBabyMonster.Clear();
+            v_PentaBabyMonster.Clear();
+            v_HexaBabyMonster.Clear();
+            v_Monster.Clear();
+
             v_Monster.Add(v_RectMonster);
             v_Monster.Add(v_PentaMonster);
             v_Monster.Add(v_HexaMonster);
