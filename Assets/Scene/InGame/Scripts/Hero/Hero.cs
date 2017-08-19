@@ -32,6 +32,7 @@ namespace Hero
             if (other.gameObject.CompareTag("Monster"))
             {
                 Debug.Log("Game Over");
+                GameTime.timeScale = 0f;
                 gameEnd.SetTrigger("GameEnd");
             }
         }

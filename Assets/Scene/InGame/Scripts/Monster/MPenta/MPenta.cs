@@ -44,7 +44,7 @@ namespace Monster.Object
         {
             while (true)
             {
-                transform.Rotate(new Vector3(0, 0, -50 * Time.deltaTime * moveVariation));
+                transform.Rotate(new Vector3(0, 0, -50 * GameTime.deltaTime * moveVariation));
 
                 moveToTarget();
 

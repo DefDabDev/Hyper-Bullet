@@ -31,7 +31,7 @@ namespace Monster.Object
 
         IEnumerator spawnMonster()
         {
-            while (true)
+            while (!GameTime.timeScale.Equals(0))
             {
                 yield return new WaitForSeconds(spawnCount);
 
