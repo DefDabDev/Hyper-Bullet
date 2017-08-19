@@ -11,6 +11,9 @@ namespace Hero
         //[HideInInspector]
         public uint[] dmg = new uint[5] { 32, 32, 32, 32, 32 };
 
+        [SerializeField]
+        Animator gameEnd;
+
         public HeroAttack _attack;
 
         void Awake()
@@ -29,6 +32,7 @@ namespace Hero
             if (other.gameObject.CompareTag("Monster"))
             {
                 Debug.Log("Game Over");
+                gameEnd.SetTrigger("GameEnd");
             }
         }
     }
