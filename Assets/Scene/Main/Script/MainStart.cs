@@ -16,4 +16,12 @@ public class MainStart : MonoBehaviour {
             Blind.instance.ReplaceScene("InGame");
         });
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }
