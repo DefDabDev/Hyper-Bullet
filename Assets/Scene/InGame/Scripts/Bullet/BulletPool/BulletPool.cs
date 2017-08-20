@@ -16,11 +16,16 @@ public class BulletPool : ALComponentSingleton<BulletPool> {
     private string _relfectionPath = string.Empty;
 
     private Transform _bulletParent;
-    private List<BulletBehaviour> _bulletList = new List<BulletBehaviour>();
+    private static List<BulletBehaviour> _bulletList = new List<BulletBehaviour>();
 
     private void Awake()
     {
+        _bulletList.Clear();
         _bulletParent = GameObject.Find("MainCanvas").transform;
+    }
+
+    void Start()
+    {
         InitPool();
     }
 
@@ -53,8 +58,13 @@ public class BulletPool : ALComponentSingleton<BulletPool> {
     {
         for (int i = 0; i < _bulletList.Count; ++i)
         {
-            if (!_bulletList[i].gameObject.activeSelf && _bulletList[i].GetType().Name.Equals("Bullet"))
+                if (_bulletList[i].GetType().Name.Equals("Bullet"))
+            {
+                if (_bulletList[i].gameObject == null)
+                    Debug.Log("FFFFFFFFF");
+            if (!_bulletList[i].gameObject.activeSelf)
                 return _bulletList[i];
+            }
         }
 
         BulletBehaviour temp = CreateBullet(_path);

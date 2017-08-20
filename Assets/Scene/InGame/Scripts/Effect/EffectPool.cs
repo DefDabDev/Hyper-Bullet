@@ -13,10 +13,11 @@ public class EffectPool : ALComponentSingleton<EffectPool> {
 
     [SerializeField]
     private int _poolCount;
-    private List<ParticleSystem> _pool = new List<ParticleSystem>();
+    private static List<ParticleSystem> _pool = new List<ParticleSystem>();
 
     private void Awake()
     {
+        _pool.Clear();
         CreatePool();
     }
 
