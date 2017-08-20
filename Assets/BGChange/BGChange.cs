@@ -14,6 +14,7 @@ public class BGChange : ALComponentSingleton<BGChange> {
 
     public void Awake()
     {
+        instance = this;
         if (_camera == null)
             _camera = Camera.main;
     }

@@ -33,7 +33,11 @@ namespace Hero
             {
                 Debug.Log("Game Over");
                 GameTime.timeScale = 0f;
+                ParticleSystem effect = EffectPool.instance.GetEffect();
+                effect.transform.position = transform.position;
+                effect.Play();
                 gameEnd.SetTrigger("GameEnd");
+                gameObject.SetActive(false);
             }
         }
     }

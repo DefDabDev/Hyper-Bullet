@@ -15,7 +15,7 @@ public class CartridgeGenerator : MonoBehaviour {
 
 	private void Start ()
     {
-        _parent = FindObjectOfType<Canvas>().transform;
+        _parent = gameObject.transform.parent;
         for (int i = 0; i < _count; ++i)
         {
             Cartridge cartridge = Instantiate(_cartridge, _parent);
