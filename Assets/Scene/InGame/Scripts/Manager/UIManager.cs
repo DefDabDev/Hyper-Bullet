@@ -18,6 +18,12 @@ public class UIManager : ALComponentSingleton<UIManager> {
     private bool _isDecreasing = false;
     private IEnumerator _stop = null;
 
+    private void Awake()
+    {
+        instance = this;
+        GameTime.timeScale = 1f;
+    }
+
     public void ChangeUI(string gunName, float gauge)
     {
         _maxGauge = gauge;
@@ -36,11 +42,13 @@ public class UIManager : ALComponentSingleton<UIManager> {
         if (_isDecreasing)
         {
             StopCoroutine("DecreaseAnimation");
+            yield break;
         }
-
         _isDecreasing = true;
+
         float timer = 0f;
         float targetValue = 0f;
+
         if (currentValue.Equals(0))
             targetValue = 0f;
         else
@@ -58,7 +66,7 @@ public class UIManager : ALComponentSingleton<UIManager> {
                     break;
 
                 timer += delay;
-                float x = ALLerp.Lerp(_gunGauge.transform.localScale.x, targetValue, timer);
+                float x = ALLerp.Lerp(_gunGauge.fillAmount, targetValue, timer);
                 SetScaleX(x);
                 yield return null;
             }
@@ -68,7 +76,8 @@ public class UIManager : ALComponentSingleton<UIManager> {
 
     private void SetScaleX(float x)
     {
-        _gunGauge.transform.localScale = new Vector3(x, 1f, 1f);
+        _gunGauge.fillAmount = x;
+        //_gunGauge.transform.localScale = new Vector3(x, 1f, 1f);
     }
 
     public void Reload(float reloadTime)
@@ -89,13 +98,16 @@ public class UIManager : ALComponentSingleton<UIManager> {
                     break;
 
                 timer += 0.1f / reloadTime;
-                _gunGauge.transform.localScale = ALLerp.Lerp(_gunGauge.transform.localScale, Vector3.one, timer);
+                float x = ALLerp.Lerp(_gunGauge.fillAmount, 1f, timer);
+                SetScaleX(x);
+                //_gunGauge.transform.localScale = ALLerp.Lerp(_gunGauge.transform.localScale, Vector3.one, timer);
                 yield return null;
             }
         }
         else
         {
-            _gunGauge.transform.localScale = Vector3.one;
+            _gunGauge.fillAmount = 1f;
+            //_gunGauge.transform.localScale = Vector3.one;
         }
     }
 }

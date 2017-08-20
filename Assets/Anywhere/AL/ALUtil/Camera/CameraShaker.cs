@@ -49,6 +49,7 @@ namespace AL.ALUtil
 
         void Awake()
         {
+            instance = this;
             _originPosition = new Vector3[targets.Count];
             for (int i = 0; i < targets.Count; ++i)
             {

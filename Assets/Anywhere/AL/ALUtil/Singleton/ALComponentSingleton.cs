@@ -10,7 +10,7 @@ namespace AL.ALUtil
         /// <summary>
         /// Singleton객체를 리턴 함
         /// </summary>
-        public static T instance { get { return _instance ?? GetInstanceObject(); } }
+        public static T instance { set { _instance = value; } get { return _instance ?? GetInstanceObject(); } }
 
         void Awake()
         {

@@ -53,6 +53,7 @@ namespace Monster
         /// <param name="amount">받은 데미지 양</param>
         public void receiveDMG(uint amount)
         {
+            Debug.Log(amount);
             if (mHP <= amount)
             {
                 if (!alone)
